@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+fb_access_token="EAAE1DkA1qK4BAJOP7ESPGwPxTxmNXAHGgEiRHIdxUqFZC0f3654ovOSnI2tvWFZCJNz9xi9uzHVcKh01GR4GEHcim2YYzkGc6CFadRabMW5nvfu5Rr29rZCQtVs1RqHIqTWZBSdlBlgM9LwD0IwkTPMvcg9199DGokENR5zO8AZDZD" #facebook access token
+fb_verifing_token="Accorhotels" #facebook verifing token
+api_client_token="443652a209264e60837601b8b172936e"
