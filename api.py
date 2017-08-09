@@ -18,17 +18,21 @@ CLIENT_ACCESS_TOKEN = config.api_client_token
 ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
 
-def api_message(text,user_id):
-    while True:
-        request = ai.text_request()
-        request.lang = 'fr'  # optional, default value equal 'en'
-        request.session_id = user_id
-        request.query = text
-        response = request.getresponse()
-        resau=response.read()
-        res=resau.decode('utf8').replace("'",'"')
-        data=json.loads(res)
-        s=json.dumps(data,indent=4,sort_keys=True)
-        break
+def api_message(text,user_id):    
+    request = ai.text_request()
+
+    request.lang = 'fr'  # optional, default value equal 'en'
+
+    request.session_id = user_id
+
+    request.query = text
+
+    response = request.getresponse()
+    resau=response.read()
+    res=resau.decode('utf8').replace("'",'"')
+
+    data=json.loads(res)
+    s=json.dumps(data,indent=4,sort_keys=True)
+
     print (s)
     return "ok"
