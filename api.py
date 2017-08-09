@@ -35,5 +35,5 @@ def api_message(text,user_id):
     data=json.loads(res)
     s=json.dumps(data,indent=4,sort_keys=True)
 
-    print (s['text'])
-    return s['text']
+    print (s['message'])
+    return s['message']
