@@ -29,6 +29,6 @@ def api_message(text,user_id):
         res=resau.decode('utf8').replace("'",'"')
         data=json.loads(res)
         s=json.dumps(data,indent=4,sort_keys=True)
-        print (s)
         break
+    print (s)
     return "ok"
