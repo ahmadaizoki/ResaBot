@@ -29,5 +29,5 @@ def api_message(text,user_id):
 
     response = request.getresponse()
 
-    print (response.read())
+    print ("la reponse",response.read())
     return response.read()
