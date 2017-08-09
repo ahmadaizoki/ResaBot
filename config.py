@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 fb_access_token="EAAE1DkA1qK4BAE5yqVHQy4y0pmBWAYZAW9RZB5H2AKvkE1gUMLDv1Of9M5W8UgZCXSIFQd8pnxZCmGn3dkZBoEVDcLW2OY7bvSLhYEeDI28NWGeONbhqOhbQA1UtvI49yh20s9x2ZBC0fpGPtaZCqHpGK6zy7WF65ZAgXpFdsDLy8wZDZD" #facebook access token
 fb_verifing_token="Accorhotels" #facebook verifing token
-api_client_token="443652a209264e60837601b8b172936e"
+api_client_token="443652a209264e60837601b8b172936e" #API.AI CLIENT_ACCESS_TOKEN

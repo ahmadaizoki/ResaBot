@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+############################################
+#les packages et les framework
 import os.path
 import sys
 import config
@@ -14,26 +15,20 @@ except ImportError:
     )
     import apiai
 
-CLIENT_ACCESS_TOKEN = config.api_client_token
+################################################
+#la connexion avec API.AI
+CLIENT_ACCESS_TOKEN = config.api_client_token #CLIENT_ACCESS_TOKEN de API.AI
 ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
-
+###############################################
+#detecter l'intention de API.AI
 def api_message(text,user_id):
     request = ai.text_request()
-
-    request.lang = 'fr'  # optional, default value equal 'en'
-
+    request.lang = 'fr'
     request.session_id = user_id
-
     request.query = text
-
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
-    #res=resau.decode('utf8').replace("'",'"')
-
-    #data=json.loads(res)
-    #s=json.dumps(data,indent=4,sort_keys=True)
-
     print (res['result']['fulfillment']['speech'])
     return res['result']['fulfillment']['speech']
