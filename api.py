@@ -29,8 +29,8 @@ def api_message(text,user_id):
     request.query = text
 
     response = request.getresponse()
-    res=response.read()
-    res=res.decode('utf8').replace("'",'"')
+    resau=response.read()
+    res=resau.decode('utf8').replace("'",'"')
 
     data=json.loads(res)
     s=json.dumps(data,indent=4,sort_keys=True)
