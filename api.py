@@ -27,12 +27,13 @@ def api_message(text,user_id):
 
     request.query = text
 
-    response = request.getresponse()
-    resau=response.read()
-    res=resau.decode('utf8').replace("'",'"')
+    response = request.getresponse().decode('utf-8')
+    res=json.loads(response)
+    #resau=response.read()
+    #res=resau.decode('utf8').replace("'",'"')
 
     #data=json.loads(res)
     #s=json.dumps(data,indent=4,sort_keys=True)
 
-    print (res[0])
+    print (res)
     return "ok"
