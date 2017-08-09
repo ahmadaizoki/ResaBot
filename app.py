@@ -23,7 +23,7 @@ app = Flask(__name__)
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
-@app.route('/', methods=["GET"])
+@app.route('/webhook', methods=["GET"])
 def fb_webhook():
     verification_code = conf.fb_verifing_token
     verify_token = request.args.get('hub.verify_token')
