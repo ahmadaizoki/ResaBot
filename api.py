@@ -4,6 +4,7 @@
 import os.path
 import sys
 import config
+import json
 
 try:
     import apiai
@@ -31,5 +32,8 @@ def api_message(text,user_id):
     res=response.read()
     res=res.decode('utf8').replace("'",'"')
 
-    print (res)
-    return res
+    data=json.loads(res)
+    s=json.dumps(data,indent=4,sort_keys=True)
+
+    print (s)
+    return s
