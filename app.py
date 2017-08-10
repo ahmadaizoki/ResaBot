@@ -54,7 +54,7 @@ def fb_receive_message():
                     page.send(user_id,Template.Generic([
                         Template.GenericElement(
                           image_url=url[0],
-                          subtitle=alt[1]
+                          subtitle=alt[0]
                     ]))
                     client.send_text(user_id,"speech")
                 else:
