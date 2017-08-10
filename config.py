@@ -5,3 +5,4 @@ api_client_token="443652a209264e60837601b8b172936e" #API.AI CLIENT_ACCESS_TOKEN
 db_url="postgres://ufmqwqytarffyx:96a05ed81622bac458a19cff32a97e37fb2ae74bfb2a1e3f3b484fdf30735b82@ec2-54-75-224-100.eu-west-1.compute.amazonaws.com:5432/deoaedt1t45duq" #connexion avec la base de données
 HID="itven27534" #hotel id
 H_Access_Token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOiJeLiokIiwicHJvcGVydGllcyI6Il5pdHZlbjI3NTM0JCIsImdyb3VwcyI6Il4kIiwiZm9yIjoiZ2VuLXVzZXIiLCJpYXQiOjE1MDE4NTI3NzAsImp0aSI6IjYzODIxYWEyLTRmZDgtNGMzMS1hMDRjLTUyMzM4OTc5ZDUwMyJ9.QWO340YC4jjBXZT2wcW9ThtCg-mJf9EF_FHZPiDEgjA" #hotel access token
+message_data_null="Désolé, j'ai pas les informations demandées. Veillez conntacter :" #s'il y a pas de data

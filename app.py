@@ -40,26 +40,29 @@ def fb_receive_message():
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
-                user_id="{sender[id]}".format(**message)
-                text="{message[text]}".format(**message)
-                res=api.api_message(text,user_id)
-                speech=res[0]
-                intention=res[1]
-                if intention=="gallery":
-                    url=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[0]
-                    alt=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[1]
-                    ln=len(url)
-                    print (url)
-                    print (alt)
-                    page.send(user_id,Template.Generic([
-                        Template.GenericElement("Gallery",
-                          image_url=url[0],
-                          subtitle=alt[0]
-                        )
-                    ]))
-                    #client.send_text(user_id,"speech")
-                else:
-                    client.send_text(user_id,speech)
+                try:
+                    user_id="{sender[id]}".format(**message)
+                    text="{message[text]}".format(**message)
+                    res=api.api_message(text,user_id)
+                    speech=res[0]
+                    intention=res[1]
+                    if intention=="gallery":
+                        url=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[0]
+                        alt=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[1]
+                        ln=len(url)
+                        print (url)
+                        print (alt)
+                        page.send(user_id,Template.Generic([
+                            Template.GenericElement("Gallery",
+                              image_url=url[0],
+                              subtitle=alt[0]
+                            )
+                        ]))
+                        #client.send_text(user_id,"speech")
+                    else:
+                        client.send_text(user_id,speech)
+                except:
+                    client.send_text(user_id,conf.message_data_null)
 
     return "Ok"
 
