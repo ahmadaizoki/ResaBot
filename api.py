@@ -6,6 +6,7 @@ import os.path
 import sys
 import config
 import json
+import fbweb
 
 try:
     import apiai
@@ -32,5 +33,12 @@ def api_message(text,user_id):
     res=json.loads(resau)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
-    print (speech,intention)
-    return ([speech]+[intention])
+    try:
+        if intention=="gallery":
+            fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token)
+            return ([speech]+[intention])
+        else:
+            return ([speech]+[intention])
+    except:
+        print (speech,intention)
+        return ([speech]+[intention])

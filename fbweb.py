@@ -14,7 +14,10 @@ def get_gallery(property,locale,_authcode):
     res=requests.get("https://websdk.fastbooking-services.com/gallery/?property="+property+"&locale="+locale+"&_authCode="+_authcode)
     resulta=res.json()
     ln=len(resulta["data"])
+    ulr=[]
+    alt=[]
     for i in range(0,ln):
-        print (resulta["data"][i]["full"]["url"])
-        print (resulta["data"][i]["full"]["alt"])
+        url=url+[resulta["data"][i]["full"]["url"]]
+        alt=alt+[resulta["data"][i]["full"]["alt"]]
+    print (url,alt)
     print (ln)
