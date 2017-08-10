@@ -33,4 +33,4 @@ def api_message(text,user_id):
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     print (speech,intention)
-    return (speech)
+    return ([speech]+[intention])

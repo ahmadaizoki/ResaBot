@@ -39,7 +39,7 @@ def fb_receive_message():
             if message.get('message'):
                 user_id="{sender[id]}".format(**message)
                 text="{message[text]}".format(**message)
-                res=api.api_message(text,user_id)
+                res=api.api_message(text,user_id)[0]
                 client.send_text(user_id,res)
 
     return "Ok"
