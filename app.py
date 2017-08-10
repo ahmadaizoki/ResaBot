@@ -61,7 +61,7 @@ def fb_receive_message():
                                   subtitle=alt[i]
                                 )
                             ])
-                        page.send(user_id,template)
+                        page.send(user_id,Template.Generic)
                         #client.send_text(user_id,"speech")
                     else:
                         client.send_text(user_id,speech)
