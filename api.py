@@ -33,13 +33,5 @@ def api_message(text,user_id):
     res=json.loads(resau)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
-    try:
-        if intention=="gallery":
-            s=fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token)[0]
-            print (s[0])
-            return ([speech]+[intention])
-        else:
-            return ([speech]+[intention])
-    except:
-        print (speech,intention)
-        return ([speech]+[intention])
+    print (speech,intention)
+    return ([speech]+[intention])
