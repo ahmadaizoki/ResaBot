@@ -21,3 +21,4 @@ def get_gallery(property,locale,_authcode):
         alt=alt+[resulta["data"][i]["full"]["alt"]]
     print (url,alt)
     print (ln)
+    return (url,alt)
