@@ -8,12 +8,14 @@ import string
 from imp import reload
 import api
 import fbweb
+from fbmq import Attachment, Template, QuickReply, Page
 
 reload(sys)
 
 
 from flask import Flask, request
 import config as conf
+page = Page(conf.fb_access_token)
 
 app = Flask(__name__)
 
@@ -49,7 +51,14 @@ def fb_receive_message():
                     ln=len(url)
                     print (url)
                     print (alt)
-                    client.send_text(user_id,"speech")
+                    page.send(user_id, Template.Generic([
+                        for i in range(0,ln):
+                            Template.GenericElement(
+                              image_url=url[i],
+                              subtitle=alt[i]
+                              )
+                    ]))
+                    #client.send_text(user_id,"speech")
                 else:
                     client.send_text(user_id,speech)
 
