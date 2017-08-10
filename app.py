@@ -7,6 +7,7 @@ import requests
 import string
 from imp import reload
 import api
+import fbweb
 
 reload(sys)
 
@@ -43,8 +44,8 @@ def fb_receive_message():
                 speech=res[0]
                 intention=res[1]
                 if intention=="gallery":
-                    url=fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token)[0]
-                    alt=fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token)[1]
+                    url=fbweb.get_gallery(conf.HID,"it_IT",config.H_Access_Token)[0]
+                    alt=fbweb.get_gallery(conf.HID,"it_IT",config.H_Access_Token)[1]
                     ln=len(url)
                     print (url)
                     print (alt)

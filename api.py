@@ -6,7 +6,6 @@ import os.path
 import sys
 import config
 import json
-import fbweb
 
 try:
     import apiai
