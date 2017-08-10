@@ -52,15 +52,15 @@ def fb_receive_message():
                         ln=len(url)
                         print (url)
                         print (alt)
-                        Template=Template.Generic([])
+                        template=Template.Generic([])
                         for i in range (0,ln):
-                            Template=Template.Generic([
+                            template=Template.Generic([
                                 Template.GenericElement("Gallery",
                                   image_url=url[i],
                                   subtitle=alt[i]
                                 )
                             ])
-                        page.send(user_id,Template)
+                        page.send(user_id,template)
                         #client.send_text(user_id,"speech")
                     else:
                         client.send_text(user_id,speech)
