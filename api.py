@@ -35,8 +35,8 @@ def api_message(text,user_id):
     intention=res['result']['action']
     try:
         if intention=="gallery":
-            s=fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token).url
-            print (s)
+            s=fbweb.get_gallery(config.HID,"it_IT",config.H_Access_Token)[0]
+            print (s[0])
             return ([speech]+[intention])
         else:
             return ([speech]+[intention])
