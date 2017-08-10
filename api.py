@@ -31,6 +31,6 @@ def api_message(text,user_id):
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
     speech=res['result']['fulfillment']['speech']
-    intention=res['result']['metadata']['intentName']
+    intention=res['result']['action']
     print (speech,intention)
     return (speech)
