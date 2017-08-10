@@ -30,5 +30,7 @@ def api_message(text,user_id):
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
-    print (res['result']['fulfillment']['speech'])
-    return res['result']['fulfillment']['speech']
+    speech=res['result']['fulfillment']['speech']
+    intention=res['result']['metadata']['intentName']
+    print (speech,intention)
+    return (speech)
