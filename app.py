@@ -51,8 +51,8 @@ def fb_receive_message():
                     ln=len(url)
                     print (url)
                     print (alt)
-                    page.send(user_id,Template.Generic(["Gallery",
-                        Template.GenericElement(
+                    page.send(user_id,Template.Generic([
+                        Template.GenericElement("Gallery",
                           image_url=url[0],
                           subtitle=alt[0]
                         )
