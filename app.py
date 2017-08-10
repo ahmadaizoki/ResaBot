@@ -54,8 +54,7 @@ def fb_receive_message():
                         print (alt)
                         template=Template.Generic([])
                         for i in range (0,ln):
-                            template=Template.Generic([
-                                Template.GenericElement("Gallery",
+                            template=Template.GenericElement("Gallery",
                                   image_url=url[i],
                                   subtitle=alt[i]
                                 )
