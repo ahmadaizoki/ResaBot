@@ -88,20 +88,20 @@ def fb_receive_message():
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from+" au "+q_to,
-                                text="Reserver a partir de "+q_price+" "+q_currency,
+                                subtitle="DU "+q_from[i]+" au "+q_to[i],
+                                text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
-                                Template.ButtonWeb("Reserver",q_BookLink)
+                                Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
                         else:
                             for i in range (0,ln):
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from+" au "+q_to,
-                                text="Reserver a partir de "+q_price+" "+q_currency,
+                                subtitle="DU "+q_from[i]+" au "+q_to[i],
+                                text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
-                                Template.ButtonWeb("Reserver",q_BookLink)
+                                Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
                         page.send(user_id,Template.Generic(template))
                     else:
