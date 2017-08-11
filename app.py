@@ -47,8 +47,9 @@ def fb_receive_message():
                     speech=res[0]
                     intention=res[1]
                     if intention=="gallery":
-                        url=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[0]
-                        alt=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)[1]
+                        gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
+                        url=gallery[0]
+                        alt=gallery[1]
                         ln=len(url)
                         template=[]
                         if ln>10:
@@ -73,13 +74,6 @@ def fb_receive_message():
                         q_price=offres[4]
                         q_currency=offres[5]
                         q_BookLink=offres[6]
-                        #url=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[0]
-                        #title=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[1]
-                        #q_from=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[2]
-                        #q_to=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[3]
-                        #q_price=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[4]
-                        #q_currency=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[5]
-                        #q_BookLink=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[6]
                         ln=len(url)
                         template=[]
                         if ln>10:
@@ -87,18 +81,18 @@ def fb_receive_message():
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Reserver a partir de "+str(q_price[i])+" "+q_currency[i],
+                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
                                 buttons=[
-                                Template.ButtonWeb("Reserver",q_BookLink[i])
+                                Template.ButtonWeb("Réserver",q_BookLink[i])
                                 ])]
                         else:
                             for i in range (0,ln):
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Reserver a partir de "+str(q_price[i])+" "+q_currency[i],
+                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
                                 buttons=[
-                                Template.ButtonWeb("Reserver",q_BookLink[i])
+                                Template.ButtonWeb("Réserver",q_BookLink[i])
                                 ])]
                         page.send(user_id,Template.Generic(template))
                     else:
