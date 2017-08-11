@@ -47,54 +47,60 @@ def fb_receive_message():
                     speech=res[0]
                     intention=res[1]
                     if intention=="gallery":
-                        gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
-                        url=gallery[0]
-                        alt=gallery[1]
-                        ln=len(url)
-                        template=[]
-                        if ln>10:
-                            for i in range (0,10):
-                                template=template+[Template.GenericElement("Gallery",
-                                item_url=url[i],
-                                image_url=url[i],
-                                subtitle=alt[i])]
-                        else:
-                            for i in range (0,ln):
-                                template=template+[Template.GenericElement("Gallery",
-                                item_url=url[i],
-                                image_url=url[i],
-                                subtitle=alt[i])]
-                        page.send(user_id,Template.Generic(template))
+                        try:
+                            gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
+                            url=gallery[0]
+                            alt=gallery[1]
+                            ln=len(url)
+                            template=[]
+                            if ln>10:
+                                for i in range (0,10):
+                                    template=template+[Template.GenericElement("Gallery",
+                                    item_url=url[i],
+                                    image_url=url[i],
+                                    subtitle=alt[i])]
+                            else:
+                                for i in range (0,ln):
+                                    template=template+[Template.GenericElement("Gallery",
+                                    item_url=url[i],
+                                    image_url=url[i],
+                                    subtitle=alt[i])]
+                            page.send(user_id,Template.Generic(template))
+                        except:
+                            client.send_text(user_id,conf.message_pas_photos)
                     elif intention=="offres":
-                        offres=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)
-                        url=offres[0]
-                        title=offres[1]
-                        q_from=offres[2]
-                        q_to=offres[3]
-                        q_price=offres[4]
-                        q_currency=offres[5]
-                        q_BookLink=offres[6]
-                        ln=len(url)
-                        template=[]
-                        if ln>10:
-                            for i in range (0,10):
-                                template=template+[Template.GenericElement(title[i],
-                                item_url=url[i],
-                                image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
-                                buttons=[
-                                Template.ButtonWeb("Réserver",q_BookLink[i])
-                                ])]
-                        else:
-                            for i in range (0,ln):
-                                template=template+[Template.GenericElement(title[i],
-                                item_url=url[i],
-                                image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
-                                buttons=[
-                                Template.ButtonWeb("Réserver",q_BookLink[i])
-                                ])]
-                        page.send(user_id,Template.Generic(template))
+                        try:
+                            offres=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)
+                            url=offres[0]
+                            title=offres[1]
+                            q_from=offres[2]
+                            q_to=offres[3]
+                            q_price=offres[4]
+                            q_currency=offres[5]
+                            q_BookLink=offres[6]
+                            ln=len(url)
+                            template=[]
+                            if ln>10:
+                                for i in range (0,10):
+                                    template=template+[Template.GenericElement(title[i],
+                                    item_url=url[i],
+                                    image_url=url[i],
+                                    subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
+                                    buttons=[
+                                    Template.ButtonWeb("Réserver",q_BookLink[i])
+                                    ])]
+                            else:
+                                for i in range (0,ln):
+                                    template=template+[Template.GenericElement(title[i],
+                                    item_url=url[i],
+                                    image_url=url[i],
+                                    subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
+                                    buttons=[
+                                    Template.ButtonWeb("Réserver",q_BookLink[i])
+                                    ])]
+                            page.send(user_id,Template.Generic(template))
+                        except:
+                            client.send_text(user_id,conf.message_pas_offres)
                     else:
                         client.send_text(user_id,speech)
                 except:

@@ -6,3 +6,5 @@ db_url="postgres://ufmqwqytarffyx:96a05ed81622bac458a19cff32a97e37fb2ae74bfb2a1e
 HID="itven27534" #hotel id
 H_Access_Token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOiJeLiokIiwicHJvcGVydGllcyI6Il5pdHZlbjI3NTM0JCIsImdyb3VwcyI6Il4kIiwiZm9yIjoiZ2VuLXVzZXIiLCJpYXQiOjE1MDE4NTI3NzAsImp0aSI6IjYzODIxYWEyLTRmZDgtNGMzMS1hMDRjLTUyMzM4OTc5ZDUwMyJ9.QWO340YC4jjBXZT2wcW9ThtCg-mJf9EF_FHZPiDEgjA" #hotel access token
 message_data_null="Désolé, j'ai pas les informations demandées. Veillez conntacter :" #s'il y a pas de data
+message_pas_offres="Désolé, il y a pas d'offres disponibles en ce moment." #s'il y a pas d'offres
+message_pas_photos="Désolé, il y a pas de photos disponibles en ce moment." #s'il y a pas de photos
