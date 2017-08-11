@@ -48,5 +48,4 @@ def get_quotation(arrivalDate,rate,nights,adults,property,output,accessCode,_aut
     q_price=resulta["data"][0]["totalPrice"]
     q_currency=resulta["data"][0]["currency"]
     q_BookLink=resulta["data"][0]["plainBookLink"]
-    print (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink)
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink)
