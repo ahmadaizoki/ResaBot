@@ -114,6 +114,7 @@ def fb_receive_message():
                             q_price=h_dispo[4]
                             q_currency=h_dispo[5]
                             q_BookLink=h_dispo[6]
+                            print ("pourquoiiiiiiiiiiiii",q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink)
                             template=[Template.GenericElement("Du "+q_from[0]+" au "+q_to[0],
                             subtitle="Pour "+q_nights[0]+" nuits et "+q_adults[0]+" personne(s)"+"\n"+"Réserver à partir de "+str(q_price[0])+" "+q_currency[0],
                             buttons=[
