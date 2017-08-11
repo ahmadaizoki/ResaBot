@@ -66,7 +66,7 @@ def fb_receive_message():
                                 image_url=url[i],
                                 subtitle=alt[i])]
                         page.send(user_id,Template.Generic(template))
-                    elif intention=="offers":
+                    elif intention=="offres":
                         url=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[0]
                         title=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[1]
                         q_from=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[2]
