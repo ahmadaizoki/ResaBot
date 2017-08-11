@@ -89,7 +89,7 @@ def fb_receive_message():
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i]+" Reserver a partir de "+q_price[i],
+                                subtitle="DU "+q_from[i]+" au "+q_to[i]+" Reserver a partir de "+str(q_price[i]),
                                 #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink[i])
