@@ -115,7 +115,7 @@ def fb_receive_message():
                             q_currency=h_dispo[5]
                             q_BookLink=h_dispo[6]
                             print ("pourquoiiiiiiiiiiiii",q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink)
-                            template=[Template.GenericElement("Du "+q_from[0]+" au "+q_to[0],
+                            template=[Template.GenericElement("gallery",
                             subtitle="Pour "+str(q_nights[0])+" nuits et "+str(q_adults[0])+" personne(s)"+"\n"+"Réserver à partir de "+str(q_price[0])+" "+q_currency[0],
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink[0])
