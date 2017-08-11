@@ -86,7 +86,7 @@ def fb_receive_message():
                         if ln>10:
                             for i in range (0,10):
                                 template=template+[Template.GenericElement(title[i],
-                                item_url=url[i],
+                                #item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from[i]+" au "+q_to[i],
                                 #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
@@ -96,7 +96,7 @@ def fb_receive_message():
                         else:
                             for i in range (0,ln):
                                 template=template+[Template.GenericElement(title[i],
-                                item_url=url[i],
+                                #item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from[i]+" au "+q_to[i],
                                 #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
