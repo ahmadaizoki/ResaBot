@@ -53,13 +53,57 @@ def fb_receive_message():
                         print (url)
                         print (alt)
                         template=[]
-                        for i in range (0,10):
-                            template=template+[Template.GenericElement("Gallery",
-                            item_url=url[i],
-                            image_url=url[i],
-                            subtitle=alt[i])]
+                        if ln>10:
+                            for i in range (0,10):
+                                template=template+[Template.GenericElement("Gallery",
+                                item_url=url[i],
+                                image_url=url[i],
+                                subtitle=alt[i])]
+                        else:
+                            for i in range (0,ln):
+                                template=template+[Template.GenericElement("Gallery",
+                                item_url=url[i],
+                                image_url=url[i],
+                                subtitle=alt[i])]
                         page.send(user_id,Template.Generic(template))
-                        #client.send_text(user_id,"speech")
+                    elif intention=="offers":
+                        url=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[0]
+                        title=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[1]
+                        q_from=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[2]
+                        q_to=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[3]
+                        q_price=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[4]
+                        q_currency=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[5]
+                        q_BookLink=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[6]
+                        print (url)
+                        print (title)
+                        print (q_from)
+                        print (q_to)
+                        print (q_price)
+                        print (q_currency)
+                        print (q_BookLink)
+                        ln=len(url)
+                        template=[]
+                        if ln>10:
+                            for i in range (0,10):
+                                template=template+[Template.GenericElement(title[i],
+                                item_url=url[i],
+                                image_url=url[i],
+                                subtitle="DU "+q_from+" au "+q_to,
+                                subtitle="Reserver a partir de "+q_price+" "+q_currency,
+                                buttons=[
+                                Template.ButtonWeb("Reserver",q_BookLink)
+                                ])]
+                        else:
+                            for i in range (0,ln):
+                                template=template+[Template.GenericElement(title[i],
+                                item_url=url[i],
+                                image_url=url[i],
+                                subtitle="DU "+q_from+" au "+q_to,
+                                subtitle="Reserver a partir de "+q_price+" "+q_currency,
+                                buttons=[
+                                Template.ButtonWeb("Reserver",q_BookLink)
+                                ])]
+                        page.send(user_id,Template.Generic(template))
                     else:
                         client.send_text(user_id,speech)
                 except:
