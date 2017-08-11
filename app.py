@@ -65,13 +65,21 @@ def fb_receive_message():
                                 subtitle=alt[i])]
                         page.send(user_id,Template.Generic(template))
                     elif intention=="offres":
-                        url=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[0]
-                        title=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[1]
-                        q_from=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[2]
-                        q_to=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[3]
-                        q_price=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[4]
-                        q_currency=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[5]
-                        q_BookLink=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[6]
+                        offres=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)
+                        url=offres[0]
+                        title=offres[1]
+                        q_from=offres[2]
+                        q_to=offres[3]
+                        q_price=offres[4]
+                        q_currency=offres[5]
+                        q_BookLink=offres[6]
+                        #url=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[0]
+                        #title=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[1]
+                        #q_from=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[2]
+                        #q_to=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[3]
+                        #q_price=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[4]
+                        #q_currency=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[5]
+                        #q_BookLink=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)[6]
                         ln=len(url)
                         template=[]
                         if ln>10:
@@ -79,8 +87,7 @@ def fb_receive_message():
                                 template=template+[Template.GenericElement(title[i],
                                 item_url=url[i],
                                 image_url=url[i],
-                                subtitle="DU "+q_from[i]+" au "+q_to[i],
-                                #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
+                                subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Reserver a partir de "+str(q_price[i])+" "+q_currency[i],
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
@@ -90,8 +97,6 @@ def fb_receive_message():
                                 item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Reserver a partir de "+str(q_price[i])+" "+q_currency[i],
-                                #subtitle="DU "+q_from[i]+" au "+q_to[i]+"               Reserver a partir de "+str(q_price[i])+" "+q_currency[i],
-                                #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
