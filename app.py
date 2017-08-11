@@ -117,7 +117,7 @@ def fb_receive_message():
                             template=Template.GenericElement("Du "+q_from+" au "+q_to,
                             subtitle="Pour "+q_nights+" nuits et "+q_adults+" personne(s)"+"\n"+"Réserver à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
-                            Template.ButtonWeb("Réserver,q_BookLink")
+                            Template.ButtonWeb("Réserver",q_BookLink)
                             ])
                             page.send(user_id,Template.Generic(template))
                         except:
