@@ -96,7 +96,7 @@ def fb_receive_message():
                                     image_url=url[i],
                                     subtitle="DU "+q_from[i]+" au "+q_to[i],
                                     buttons=[
-                                    Template.ButtonWeb("Réserver à partir de "+str(q_price[i])+" "+q_currency[i],q_BookLink[i])
+                                    Template.ButtonWeb("Réserver à partir de "+"\n"+str(q_price[i])+" "+q_currency[i],q_BookLink[i])
                                     ])]
                             page.send(user_id,Template.Generic(template))
                         except:
