@@ -89,7 +89,7 @@ def fb_receive_message():
                                 item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from[i]+" au "+q_to[i],
-                                text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
+                                #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
@@ -99,7 +99,7 @@ def fb_receive_message():
                                 item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from[i]+" au "+q_to[i],
-                                text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
+                                #text="Reserver a partir de "+q_price[i]+" "+q_currency[i],
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink[i])
                                 ])]
