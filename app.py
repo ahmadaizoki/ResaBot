@@ -101,6 +101,27 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                         except:
                             client.send_text(user_id,conf.message_pas_offres)
+                    elif intention=="h_dispo":
+                        try:
+                            date=res[2]
+                            nights=res[3]
+                            adults=res[4]
+                            h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
+                            q_from=h_dispo[0]
+                            q_to=h_dispo[1]
+                            q_nights=h_dispo[2]
+                            q_adults=h_dispo[3]
+                            q_price=h_dispo[4]
+                            q_currency=h_dispo[5]
+                            q_BookLink=h_dispo[6]
+                            template=Template.GenericElement("Du "+q_from+" au "+q_to,
+                            subtitle="Pour "+q_nights+" nuits et "+q_adults+" personne(s)"+"\n"+"Réserver à partir de "+q_price+" "+q_currency,
+                            buttons=[
+                            Template.ButtonWeb("Réserver,q_BookLink")
+                            ])
+                            page.send(user_id,Template.Generic(template))
+                        except:
+                            client.send_text(user_id,conf.message_pas_dispo)
                     else:
                         client.send_text(user_id,speech)
                 except:

@@ -32,5 +32,12 @@ def api_message(text,user_id):
     res=json.loads(resau)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
-    print (speech,intention)
-    return ([speech]+[intention])
+    if intention=="h_dispo":
+        date=res['result']['parameters']['date']
+        nights=res['result']['parameters']['nbnight']
+        adults=res['result']['parameters']['nbpax']
+        print ([speech]+[intention]+[date]+[nights]+[adults])
+        return ([speech]+[intention]+[date]+[nights]+[adults])
+    else:
+        print (speech,intention)
+        return ([speech]+[intention])

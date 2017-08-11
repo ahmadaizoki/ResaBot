@@ -8,3 +8,4 @@ H_Access_Token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOiJeLiokIiwicHJ
 message_data_null="Désolé, j'ai pas les informations demandées. Veillez conntacter :" #s'il y a pas de data
 message_pas_offres="Désolé, il y a pas d'offres disponibles en ce moment." #s'il y a pas d'offres
 message_pas_photos="Désolé, il y a pas de photos disponibles en ce moment." #s'il y a pas de photos
+message_pas_dispo="Désolé, il y a pas de réservation pour ces informations. Veuillez ressayer avec des autres informations" #s'il y a pas de réservation
