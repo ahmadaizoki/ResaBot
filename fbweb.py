@@ -43,4 +43,4 @@ def get_quotation(arrivalDate,rate,nights,adults,property,output,accessCode,_aut
     resulta=res.json()
     print (resulta)
 
-get_quotation("2017-10-28","Offerta1","2","2","itven27534","json","private-rate-code","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOiJeLiokIiwicHJvcGVydGllcyI6Il5pdHZlbjI3NTM0JCIsImdyb3VwcyI6Il4kIiwiZm9yIjoiZ2VuLXVzZXIiLCJpYXQiOjE1MDE4NTI3NzAsImp0aSI6IjYzODIxYWEyLTRmZDgtNGMzMS1hMDRjLTUyMzM4OTc5ZDUwMyJ9.QWO340YC4jjBXZT2wcW9ThtCg-mJf9EF_FHZPiDEgjA")
+get_quotation("2017-11-01","","2","2","itven27534","json","","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOiJeLiokIiwicHJvcGVydGllcyI6Il5pdHZlbjI3NTM0JCIsImdyb3VwcyI6Il4kIiwiZm9yIjoiZ2VuLXVzZXIiLCJpYXQiOjE1MDE4NTI3NzAsImp0aSI6IjYzODIxYWEyLTRmZDgtNGMzMS1hMDRjLTUyMzM4OTc5ZDUwMyJ9.QWO340YC4jjBXZT2wcW9ThtCg-mJf9EF_FHZPiDEgjA")

@@ -8,7 +8,7 @@ import string
 from imp import reload
 import api
 import fbweb
-from fbmq import Attachment, Template, QuickReply, Page
+from fbmq import Template, Page
 
 reload(sys)
 
