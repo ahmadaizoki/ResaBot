@@ -89,7 +89,7 @@ def fb_receive_message():
                                 item_url=url[i],
                                 image_url=url[i],
                                 subtitle="DU "+q_from+" au "+q_to,
-                                subtitle="Reserver a partir de "+q_price+" "+q_currency,
+                                text="Reserver a partir de "+q_price+" "+q_currency,
                                 buttons=[
                                 Template.ButtonWeb("Reserver",q_BookLink)
                                 ])]
