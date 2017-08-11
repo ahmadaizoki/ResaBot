@@ -121,7 +121,7 @@ def fb_receive_message():
                             ])
                             page.send(user_id,Template.Generic(template))
                         except:
-                            client.send_text(user_id,conf.message_pas_dispo)
+                            client.send_text(user_id,speech)
                     else:
                         client.send_text(user_id,speech)
                 except:
