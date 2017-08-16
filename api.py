@@ -8,6 +8,8 @@ import config
 import json
 import date as dd
 import date_week
+import time
+import datetime
 
 try:
     import apiai
@@ -47,6 +49,14 @@ def api_message(text,user_id):
         elif date in config.date_week_end:
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
+        elif date in config.date_noel:
+            tm_mon=time_loc.tm_mon
+            tm_mday=time_loc.tm_mday
+            tm_year=time_loc.tm_year
+            if tm_mon==12 and tm_mday>25:
+                date=datetime.date(tm_year+1,12,25)
+            else:
+                date=datetime.date(tm_year,12,25)
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
