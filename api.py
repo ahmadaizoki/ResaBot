@@ -7,6 +7,7 @@ import sys
 import config
 import json
 import date as dd
+import date-week
 
 try:
     import apiai
@@ -43,6 +44,9 @@ def api_message(text,user_id):
             date=dd.time_calc(1)
         elif date in config.date2:
             date=dd.time_calc(2)
+        elif date in date_week_end:
+            ddd=date-week.date_week()
+            date=dd.time_calc(ddd)
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
