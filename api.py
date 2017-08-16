@@ -7,8 +7,7 @@ import sys
 import config
 import json
 import date as dd
-#import time
-#import datetime
+import datetime
 
 try:
     import apiai
@@ -45,14 +44,15 @@ def api_message(text,user_id):
             date=dd.time_calc(1)
         elif date in config.date2:
             date=dd.time_calc(2)
-        #elif date in date_week_end:
-        #    datee=datetime.datetime.weekday()
-        #    dateee=(datee%6)
-        #    if dateee==0:
-        #        date=dd.time_calc(6)
-        #    else:
-        #        dateee=dateee-1
-        #        date=dd.time_calc(dateee)
+        elif date in date_week_end:
+            date=datetime.datetime.today()
+            date=datee.weekday()
+            date=(date%6)
+            if date==0:
+                date=dd.time_calc(6)
+            else:
+                date=date-1
+                date=dd.time_calc(date)
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
