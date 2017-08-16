@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+  # -*- coding: utf-8 -*-
 import sys
 import traceback
 import json
@@ -25,6 +25,13 @@ app = Flask(__name__)
 
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
+
+page.greeting("Bienvenue")
+
+page.show_starting_button("START_PAYLOAD")
+@page.callback(['START_PAYLOAD'])
+def start_callback(payload,event):
+    print ("Allez on commence")
 
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
