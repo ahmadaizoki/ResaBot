@@ -50,6 +50,7 @@ def api_message(text,user_id):
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
         elif date in config.date_noel:
+            time_loc=time.localtime()
             tm_mon=time_loc.tm_mon
             tm_mday=time_loc.tm_mday
             tm_year=time_loc.tm_year
