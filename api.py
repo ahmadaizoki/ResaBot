@@ -43,8 +43,6 @@ def api_message(text,user_id):
             date=dd.time_calc(1)
         elif date in config.date2:
             date=dd.time_calc(2)
-        elif date in date_week_end:
-
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
