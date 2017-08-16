@@ -7,7 +7,7 @@ import sys
 import config
 import json
 import date as dd
-#import date_week
+import date_week
 
 try:
     import apiai
