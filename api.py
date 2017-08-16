@@ -61,6 +61,17 @@ def api_message(text,user_id):
             else:
                 d=datetime.date(tm_year,12,25)
                 date=str(d)
+        elif date in config.date_valentin:
+            time_loc=time.localtime()
+            tm_mon=time_loc.tm_mon
+            tm_mday=time_loc.tm_mday
+            tm_year=time_loc.tm_year
+            if tm_mon>=2 and tm_mday>14:
+                d=datetime.date(tm_year+1,02,14)
+                date=str(d)
+            else:
+                d=datetime.date(tm_year,02,14)
+                date=str(d)
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
