@@ -67,10 +67,10 @@ def api_message(text,user_id):
             tm_mday=time_loc.tm_mday
             tm_year=time_loc.tm_year
             if tm_mon>=2 and tm_mday>14:
-                d=datetime.date(tm_year+1,02,14)
+                d=datetime.date(tm_year+1,2,14)
                 date=str(d)
             else:
-                d=datetime.date(tm_year,02,14)
+                d=datetime.date(tm_year,2,14)
                 date=str(d)
         else:
             date=res['result']['parameters']['date']
