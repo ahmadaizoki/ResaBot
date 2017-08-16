@@ -6,6 +6,8 @@ import os.path
 import sys
 import config
 import json
+import date as dd
+import time
 
 try:
     import apiai
@@ -36,6 +38,14 @@ def api_message(text,user_id):
         date=res['result']['parameters']['date']
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
+        if date in config.date0:
+            date=dd.time_calc(0)
+        elif date in config.date1:
+            date=dd.time_calc(1)
+        elif date in config.date2:
+            date=dd.time_calc(2)
+        else:
+            date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     else:
