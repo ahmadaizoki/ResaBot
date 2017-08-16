@@ -12,4 +12,4 @@ message_pas_dispo="Désolé, il y a pas de réservation pour ces informations. V
 date0=["aujourd'hui","ce soir","le soir","cette nuit"]
 date1=["demain soir","demain"]
 date2=["après demain soir","après demain","apres demain soir","apres demain","aprés demain soir","aprés demain"]
-date_week_end=["ce week-end","le week-end prochain","le prochin week-end","ce week end","le week end prochain","le prochin week end"]
+date_week_end=["ce week-end","le week-end prochain","le prochin week-end","ce week end","le week end prochain","le prochin week end","prochin week end","prochin week-end","week-end prochain","week end prochain","ce weekend","le weekend prochain","le prochin weekend","prochin weekend"]
