@@ -40,6 +40,7 @@ def api_message(text,user_id):
         date=res['result']['parameters']['date']
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
+        date=date.lower()
         if date in config.date0:
             date=dd.time_calc(0)
         elif date in config.date1:
@@ -55,9 +56,11 @@ def api_message(text,user_id):
             tm_mday=time_loc.tm_mday
             tm_year=time_loc.tm_year
             if tm_mon==12 and tm_mday>25:
-                date=datetime.date(tm_year+1,12,25)
+                d=datetime.date(tm_year+1,12,25)
+                date=str(d)
             else:
-                date=datetime.date(tm_year,12,25)
+                d=datetime.date(tm_year,12,25)
+                date=str(d)
         else:
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
