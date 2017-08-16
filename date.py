@@ -40,5 +40,3 @@ def time_calc(day):
         tm_mon=tm_mon
     date=datetime.date(tm_year,tm_mon,tm_mday)
     return str(date)
-
-print (time_calc(0))
