@@ -46,7 +46,7 @@ def api_message(text,user_id):
             date=dd.time_calc(2)
         elif date in date_week_end:
             date=datetime.datetime.today()
-            date=datee.weekday()
+            date=date.weekday()
             date=(date%6)
             if date==0:
                 date=dd.time_calc(6)
