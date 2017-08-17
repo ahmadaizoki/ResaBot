@@ -10,6 +10,7 @@ import date as dd
 import date_week
 import time
 import datetime
+from random import randint
 
 try:
     import apiai
@@ -77,7 +78,9 @@ def api_message(text,user_id):
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action":
-        speech=res['result']['fulfillment']['messages'][1]['imageUrl']
+        ln=len(res['result']['fulfillment']['messages'])
+        i=randint(1,ln)
+        speech=res['result']['fulfillment']['messages'][i]['imageUrl']
         print ([speech]+[intention])
         return ([speech]+[intention])
     else:
