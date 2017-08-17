@@ -127,4 +127,4 @@ def analyse_date(sentence):
                 if re==i:
                     break
     date=datetime.date(tm_year,m,day)
-    return date
+    return str(date)
