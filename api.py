@@ -76,7 +76,7 @@ def api_message(text,user_id):
             date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
-    elif intention="insultes_action":
+    elif intention=="insultes_action":
         speech=res['result']['fulfillment']['messages'][0]['imageUrl']
         print ([speech]+[intention])
         return ([speech]+[intention])
