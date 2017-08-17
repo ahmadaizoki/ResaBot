@@ -79,8 +79,9 @@ def api_message(text,user_id):
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action":
         ln=len(res['result']['fulfillment']['messages'])
-        i=randint(1,ln)
-        speech=res['result']['fulfillment']['messages'][i]['imageUrl']
+        print (ln)
+        #i=randint(1,ln)
+        speech=res['result']['fulfillment']['messages'][1]['imageUrl']
         print ([speech]+[intention])
         return ([speech]+[intention])
     else:
