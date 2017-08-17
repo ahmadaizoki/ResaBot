@@ -11,6 +11,7 @@ import date_week
 import time
 import datetime
 from random import randint
+import analys
 
 try:
     import apiai
@@ -74,7 +75,10 @@ def api_message(text,user_id):
                 d=datetime.date(tm_year,2,14)
                 date=str(d)
         else:
-            date=res['result']['parameters']['date']
+            try:
+                date=analys.analyse_date(date)
+            except:
+                date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action":
