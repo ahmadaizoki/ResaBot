@@ -76,7 +76,8 @@ def api_message(text,user_id):
                 date=str(d)
         else:
             try:
-                date=analys.analyse_date(date)
+                date1=str(date)
+                date=analys.analyse_date(date1)
             except:
                 date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
