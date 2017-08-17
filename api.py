@@ -80,8 +80,8 @@ def api_message(text,user_id):
     elif intention=="insultes_action":
         ln=len(res['result']['fulfillment']['messages'])
         print (ln)
-        #i=randint(1,ln)
-        speech=res['result']['fulfillment']['messages'][1]['imageUrl']
+        i=randint(1,ln-1)
+        speech=res['result']['fulfillment']['messages'][i]['imageUrl']
         print ([speech]+[intention])
         return ([speech]+[intention])
     else:
