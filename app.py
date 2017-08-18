@@ -26,6 +26,13 @@ app = Flask(__name__)
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
+@page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
+def more_room(payload,event):
+    print ("hello")
+self.page.handle_webhook(payload,postback=handler1)
+def handler1(event):
+    print ("hello")
+
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
     verification_code = conf.fb_verifing_token
@@ -123,9 +130,6 @@ def fb_receive_message():
                             Template.ButtonPostBack("Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
                             ])]
                             page.send(user_id,Template.Generic(template))
-                            @page.callback(["DEVELOPED_DEFINED_PAYLOAD"])
-                            def more_room(payload,event):
-                                print ("hello")
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action":
