@@ -15,3 +15,4 @@ date2=["après demain soir","après demain","apres demain soir","apres demain","
 date_week_end=["ce week-end","le week-end prochain","le prochain week-end","ce week end","le week end prochain","le prochain week end","prochain week end","prochain week-end","week-end prochain","week end prochain","ce weekend","le weekend prochain","le prochain weekend","prochain weekend","weekend prochain"]
 date_noel=["noel","noel prochain","le noel","prochain noel","noël","noël prochain","le noël","prochain noël"]
 date_valentin=["saint-valentin","saint valentin","la saint-valentin","la saint valentin","cette saint-valentin","cette saint valentin","prochain saint-valentin","prochain saint valentin","saint-valentin prochain","saint valentin prochain"]
+room=["Standard-Room","Camera-Deluxe","Grand-Suite","Junior-Suite","Suite","Suite-Presidenziale"]
