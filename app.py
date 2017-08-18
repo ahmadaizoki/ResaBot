@@ -27,9 +27,9 @@ from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
 @page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
-def more_room(payload,event):
+def more_room(payload,event,postback=handler1):
     print ("hello")
-page.handle_webhook(payload,postback=handler1)
+
 def handler1(event):
     print ("hello")
 
