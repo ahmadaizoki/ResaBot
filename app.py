@@ -124,7 +124,7 @@ def fb_receive_message():
                             ])]
                             page.send(user_id,Template.Generic(template))
                             @page.callback(["DEVELOPED_DEFINED_PAYLOAD"])
-                            def more_room():
+                            def more_room(payload,event):
                                 print ("hello")
                         except:
                             client.send_text(user_id,speech)
