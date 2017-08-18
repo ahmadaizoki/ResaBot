@@ -26,12 +26,35 @@ app = Flask(__name__)
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
-@page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
-def more_room(payload,event,postback=handler1):
-    print ("hello")
 
-def handler1(event):
-    print ("hello")
+
+def more_room(user_id,arrivalDate,rate,nights,adults,property,output,accessCode,_authCode):
+    h_dispo=get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode,_authCode)
+    q_from=h_dispo[0]
+    q_to=h_dispo[1]
+    q_nights=h_dispo[2]
+    q_adults=h_dispo[3]
+    q_price=h_dispo[4]
+    q_currency=h_dispo[5]
+    q_BookLink=h_dispo[6]
+    q_room=h_dispo[7]
+    ln=len(q_from)
+    template=[]
+    if ln >10:
+        for i in range(0,10):
+            template=template+[Template.GenericElement(q_room,
+            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            buttons=[
+            Template.ButtonWeb("Réserver",q_BookLink)
+            ])]
+    else:
+        for i in range (0,ln):
+            template=template+[Template.GenericElement(q_room,
+            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            buttons=[
+            Template.ButtonWeb("Réserver",q_BookLink)
+            ])]
+    page.send(user_id,Template.Generic(template))
 
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
@@ -130,6 +153,9 @@ def fb_receive_message():
                             Template.ButtonPostBack("Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
                             ])]
                             page.send(user_id,Template.Generic(template))
+                            @page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
+                            def more_room(payload,event,postback=more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)):
+                                print ("hello")
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action":
