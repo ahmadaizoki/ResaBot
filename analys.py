@@ -128,5 +128,3 @@ def analyse_date(sentence):
                     break
     date=datetime.date(tm_year,m,day)
     return str(date)
-
-print (analyse_date("Le premier weekend de septembre"))
