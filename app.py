@@ -154,7 +154,8 @@ def fb_receive_message():
                             ])]
                             page.send(user_id,Template.Generic(template))
                             @page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
-                            def more_room(payload,event,postback=more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)):
+                            def more_room_callback():
+                                more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
                                 print ("hello")
                         except:
                             client.send_text(user_id,speech)
