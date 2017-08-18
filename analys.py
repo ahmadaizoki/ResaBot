@@ -6,9 +6,10 @@ import config
 import datetime
 import unicodedata
 import time
+import os
 
 def analyse_date(sentence):
-    sentence1=unicode(sentence,'utf-8')
+    sentence1=unicode(sentence)
     sentence2=unicodedata.normalize('NFD',sentence1).encode('ascii','ignore')
     sentence_words = nltk.word_tokenize(sentence2)
     time_loc=time.localtime()
