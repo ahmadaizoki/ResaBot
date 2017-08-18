@@ -87,7 +87,7 @@ def fb_receive_message():
                                     image_url=url[i],
                                     subtitle="DU "+q_from[i]+" au "+q_to[i]+"\n"+"Réserver à partir de "+str(q_price[i])+" "+q_currency[i],
                                     buttons=[
-                                    Template.ButtonWeb("Réserver",q_BookLink[i])
+                                    Template.ButtonWeb("Réserver Standard-Room",q_BookLink[i])
                                     ])]
                             else:
                                 for i in range (0,ln):
