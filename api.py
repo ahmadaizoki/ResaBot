@@ -74,11 +74,12 @@ def api_message(text,user_id):
             else:
                 d=datetime.date(tm_year,2,14)
                 date=str(d)
-        #elif analyse_date_date(date):
-        #    date1=str(date)
-        #    date=analys.analyse_date(date1)
         else:
-            date=res['result']['parameters']['date']
+            try:
+                date1=str(date)
+                date=analys.analyse_date(date1)
+            except:
+                date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action":
