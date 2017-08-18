@@ -43,6 +43,7 @@ def fb_receive_message():
                 try:
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
+                    print (text)
                     res=api.api_message(text,user_id)
                     speech=res[0]
                     intention=res[1]
@@ -116,7 +117,7 @@ def fb_receive_message():
                             q_BookLink=h_dispo[6]
                             q_room=h_dispo[7]
                             template=[Template.GenericElement(q_room,
-                            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+                            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
                             Template.ButtonPostBack("Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
