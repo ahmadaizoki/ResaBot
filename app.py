@@ -28,7 +28,7 @@ client=Messager(conf.fb_access_token)
 
 @page.callback(["DEVELOPED_DEFINED_PAYLOAD"])
 def callback_clicked_button(payload,event):
-    print (payload,event)
+    print ("payload,event")
 
 
 def more_room(user_id,arrivalDate,rate,nights,adults,property,output,accessCode,_authCode):
