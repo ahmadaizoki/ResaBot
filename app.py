@@ -29,7 +29,7 @@ client=Messager(conf.fb_access_token)
 @page.callback(["DEVELOPED_DEFINED_PAYLOAD"],types=['POSTBACK'])
 def more_room(payload,event):
     print ("hello")
-self.page.handle_webhook(payload,postback=handler1)
+page.handle_webhook(payload,postback=handler1)
 def handler1(event):
     print ("hello")
 
