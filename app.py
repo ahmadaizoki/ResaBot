@@ -77,6 +77,7 @@ def fb_receive_message():
                 try:
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
+                    print (text)
                     res=api.api_message(text,user_id)
                     speech=res[0]
                     intention=res[1]
