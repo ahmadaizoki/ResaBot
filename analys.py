@@ -9,13 +9,11 @@ import time
 import os
 import sys
 
-is_python3=sys.version_info.major==3
-if is_python3:
-    unicode=str
 def analyse_date(sentence):
-    sentence1=unicode(sentence)
-    sentence2=unicodedata.normalize('NFD',sentence1)
+    sentence1=unicodedata.normalize('NFD',sentence).encode('ascii','ignore')
+    sentence2=sentence1.decode('utf-8')
     sentence_words = nltk.word_tokenize(sentence2)
+    print (sentence_words)
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
     for mot1 in sentence_words:
@@ -133,5 +131,3 @@ def analyse_date(sentence):
                     break
     date=datetime.date(tm_year,m,day)
     return str(date)
-
-print (analyse_date("pour le premier samedi de septembre"))
