@@ -7,10 +7,14 @@ import datetime
 import unicodedata
 import time
 import os
+import sys
 
+is_python3=sys.version_info.major==3
+if is_python3:
+    unicode=str
 def analyse_date(sentence):
     sentence1=unicode(sentence)
-    sentence2=unicodedata.normalize('NFD',sentence1).encode('ascii','ignore')
+    sentence2=unicodedata.normalize('NFD',sentence1)
     sentence_words = nltk.word_tokenize(sentence2)
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
