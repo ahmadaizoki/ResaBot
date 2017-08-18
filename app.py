@@ -26,6 +26,7 @@ app = Flask(__name__)
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
+@page.callback(["DEVELOPED_DEFINED_PAYLOAD"])
 def more_room(user_id,arrivalDate,rate,nights,adults,property,output,accessCode,_authCode):
     h_dispo=get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode,_authCode)
     q_from=h_dispo[0]
@@ -148,7 +149,7 @@ def fb_receive_message():
                             subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
-                            Template.ButtonPostBack("Plus de chambres","coucou")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
+                            Template.ButtonPostBack("Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
                             ])]
                             page.send(user_id,Template.Generic(template))
                         except:

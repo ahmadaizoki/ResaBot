@@ -72,5 +72,3 @@ def get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode
         q_BookLink=q_BookLink+[resulta["data"][0]["plainBookLink"]]
         q_room=q_room+[resulta["data"][0]["room"]]
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
-
-print (get_quotation_room("2017-10-11","","2","2",config.HID,"json","",config.H_Access_Token))
