@@ -142,6 +142,7 @@ def received_postback(event):
     payload=event["postback"]["payload"]
     payload=payload.split(',')
     h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
+    print (h_dispo)
     q_from=h_dispo[0]
     q_to=h_dispo[1]
     q_nights=h_dispo[2]
@@ -151,6 +152,7 @@ def received_postback(event):
     q_BookLink=h_dispo[6]
     q_room=h_dispo[7]
     ln=len(q_from)
+    print (ln)
     template=[]
     if ln >10:
         for i in range(0,10):
