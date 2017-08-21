@@ -80,12 +80,7 @@ def api_message(text,user_id):
                 date1=str(date)
                 date=analys.analyse_date(date1)
             except:
-                if time.strptime(date,'%Y-%m-%d'):
-                    date=res['result']['parameters']['date']
-                elif time.strptime(date_inv,'%Y-%m-%d'):
-                    date=date_inv
-                else:
-                    date=res['result']['parameters']['date']
+                date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p" or intention=="r_i":
