@@ -140,9 +140,9 @@ def fb_receive_message():
 def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
+    print (event)
+    print (payload)
     if payload=="CHAMBRE_PAYLOAD":
-        print (event)
-        print (payload)
         page.send(user_id,"okkk!")
 ########################################################################
 if __name__ == '__main__':
