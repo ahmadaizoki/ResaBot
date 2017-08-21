@@ -163,13 +163,12 @@ def received_postback(event):
             ])]
     else:
         for i in range (0,ln):
-            template=template+[Template.GenericElement("Une ",q_room[i],
+            template=template+[Template.GenericElement(title[i],
             subtitle="Pour "+str(q_nights[i])+" nuits et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
             buttons=[
-            Template.ButtonWeb("Réserver",q_BookLink[0])
+            Template.ButtonWeb("Réserver",q_BookLink[i])
             ])]
-    if payload[0]=="CHAMBRE_PAYLOAD":
-        page.send(user_id,Template.Generic(template))
+    page.send(user_id,Template.Generic(template))
 ########################################################################
 if __name__ == '__main__':
     app.run()
