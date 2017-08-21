@@ -141,7 +141,7 @@ def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
     payload=payload.split(',')
-    h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
+    h_dispo=fbweb.get_quotation_room(str(payload[1]),"",str(payload[2]),str(payload[3]),conf.HID,"json","",conf.H_Access_Token)
     q_from=h_dispo[0]
     q_to=h_dispo[1]
     q_nights=h_dispo[2]
