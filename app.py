@@ -132,13 +132,14 @@ def fb_receive_message():
                         client.send_text(user_id,speech)
                 except:
                     client.send_text(user_id,conf.message_data_null)
+            elif message.get('postback'):
+                received_postback(message)
 
     return "Ok"
 
-@page.callback_button(['DEVELOPED_DEFINED_PAYLOAD'])
-def callback_clicked_button(payload,event):
+def received_postback(event):
     user_id=event["sender"]["id"]
-    pyload=event["sender"]["payload"]
+    payload=event["postback"]["payload"]
     if payload=="DEVELOPED_DEFINED_PAYLOAD":
         page.send(user_id,"okkk!")
 ########################################################################
