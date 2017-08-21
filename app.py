@@ -135,6 +135,12 @@ def fb_receive_message():
 
     return "Ok"
 
+@page.callback_button(['DEVELOPED_DEFINED_PAYLOAD'])
+def callback_clicked_button(payload,event):
+    user_id=event["sender"]["id"]
+    pyload=event["sender"]["payload"]
+    if payload=="DEVELOPED_DEFINED_PAYLOAD":
+        page.send(user_id,"okkk!")
 ########################################################################
 if __name__ == '__main__':
     app.run()
