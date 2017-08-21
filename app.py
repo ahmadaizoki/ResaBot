@@ -117,7 +117,7 @@ def fb_receive_message():
                             q_currency=h_dispo[5]
                             q_BookLink=h_dispo[6]
                             q_room=h_dispo[7]
-                            template=[Template.GenericElement("Une"+q_room,
+                            template=[Template.GenericElement("Une "+q_room,
                             subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
@@ -141,10 +141,33 @@ def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
     payload=payload.split(',')
-    print (event)
-    print (payload)
+    h_dispo=get_quotation_room(payload[1],"",int(payload[2]),int(payload[3]),conf.HID,"json","",conf.H_Access_Token)
+    q_from=h_dispo[0]
+    q_to=h_dispo[1]
+    q_nights=h_dispo[2]
+    q_adults=h_dispo[3]
+    q_price=h_dispo[4]
+    q_currency=h_dispo[5]
+    q_BookLink=h_dispo[6]
+    q_room=h_dispo[7]
+    ln=len(q_from)
+    template=[]
+    if ln >10:
+        for i in range(0,10):
+            template=template+[Template.GenericElement("Une "+q_room,
+            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            buttons=[
+            Template.ButtonWeb("Réserver",q_BookLink)
+            ])]
+    else:
+        for i in range (0,ln):
+            template=template+[Template.GenericElement("Une ",q_room,
+            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            buttons=[
+            Template.ButtonWeb("Réserver",q_BookLink)
+            ])]
     if payload[0]=="CHAMBRE_PAYLOAD":
-        page.send(user_id,"okkk!")
+        page.send(user_id,Template.Generic(template))
 ########################################################################
 if __name__ == '__main__':
     app.run()
