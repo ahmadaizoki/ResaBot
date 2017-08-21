@@ -117,11 +117,11 @@ def fb_receive_message():
                             q_currency=h_dispo[5]
                             q_BookLink=h_dispo[6]
                             q_room=h_dispo[7]
-                            template=[Template.GenericElement(q_room,
-                            subtitle="Une chambre pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+                            template=[Template.GenericElement("Une"+q_room,
+                            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
-                            Template.ButtonPostBack("Plus de chambres",str(["CHAMBRE_PAYLOAD"]+[date]+[nights]+[adults]))#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
+                            Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(date)+","+str(nights)+","+str(adults)))#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
                             ])]
                             page.send(user_id,Template.Generic(template))
                         except:
@@ -140,6 +140,7 @@ def fb_receive_message():
 def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
+    payload=
     print (event)
     print (payload)
     if payload=="CHAMBRE_PAYLOAD":
