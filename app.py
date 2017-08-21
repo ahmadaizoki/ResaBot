@@ -126,7 +126,7 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                         except:
                             client.send_text(user_id,speech)
-                    elif intention=="insultes_action":
+                    elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p" or intention=="r_i":
                         client.send_image(user_id,speech)
                     else:
                         client.send_text(user_id,speech)
