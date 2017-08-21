@@ -141,7 +141,7 @@ def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
     payload=payload.split(',')
-    h_dispo=fbweb.get_quotation_room(str(payload[1]),"",str(payload[2]),str(payload[3]),conf.HID,"json","",conf.H_Access_Token)
+    h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
     q_from=h_dispo[0]
     q_to=h_dispo[1]
     q_nights=h_dispo[2]
@@ -154,17 +154,17 @@ def received_postback(event):
     template=[]
     if ln >10:
         for i in range(0,10):
-            template=template+[Template.GenericElement("Une "+q_room,
-            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            template=template+[Template.GenericElement("Une "+q_room[i],
+            subtitle="Pour "+str(q_nights[i])+" nuits et "+str(q_adults[i])+" personne(s)"+"\n"+"Réserver du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
             buttons=[
-            Template.ButtonWeb("Réserver",q_BookLink)
+            Template.ButtonWeb("Réserver",q_BookLink[i])
             ])]
     else:
         for i in range (0,ln):
-            template=template+[Template.GenericElement("Une ",q_room,
-            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Réserver du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+            template=template+[Template.GenericElement("Une ",q_room[i],
+            subtitle="Pour "+str(q_nights[i])+" nuits et "+str(q_adults[i])+" personne(s)"+"\n"+"Réserver du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
             buttons=[
-            Template.ButtonWeb("Réserver",q_BookLink)
+            Template.ButtonWeb("Réserver",q_BookLink[i])
             ])]
     if payload[0]=="CHAMBRE_PAYLOAD":
         page.send(user_id,Template.Generic(template))
