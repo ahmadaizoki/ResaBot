@@ -143,7 +143,7 @@ def received_postback(event):
     payload=payload.split(',')
     print (event)
     print (payload)
-    if payload=="CHAMBRE_PAYLOAD":
+    if payload[0]=="CHAMBRE_PAYLOAD":
         page.send(user_id,"okkk!")
 ########################################################################
 if __name__ == '__main__':
