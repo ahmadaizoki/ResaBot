@@ -169,7 +169,10 @@ def received_postback(event):
             Template.ButtonWeb("Réserver",q_BookLink[i])
             ])]
     if payload[0]=="CHAMBRE_PAYLOAD":
-        page.send(user_id,Template.Generic(template))
+        try:
+            page.send(user_id,Template.Generic(template))
+        except:
+            page.send(user_id.conf.message_data_null)
 ########################################################################
 if __name__ == '__main__':
     app.run()
