@@ -120,8 +120,8 @@ def fb_receive_message():
                             template=[Template.GenericElement(q_room,
                             subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
-                            Template.ButtonWeb("Réserver",q_BookLink),
-                            Template.ButtonPostBack("\n"+"Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
+                            Template.ButtonWeb("Réserver"+"\n",q_BookLink),
+                            Template.ButtonPostBack("Plus de chambres","DEVELOPED_DEFINED_PAYLOAD")#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
                             ])]
                             page.send(user_id,Template.Generic(template))
                         except:
