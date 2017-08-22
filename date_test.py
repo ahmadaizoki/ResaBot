@@ -19,6 +19,6 @@ def test(date):
         except:
             date=date
     print (date)
-    return date
+    return str(date)
 
 test("10-10-2017")
