@@ -13,7 +13,6 @@ def analyse_date(sentence):
     sentence1=unicodedata.normalize('NFD',sentence).encode('ascii','ignore')
     sentence2=sentence1.decode('utf-8')
     sentence_words = nltk.word_tokenize(sentence2)
-    print (sentence_words)
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
     tm_mon=time_loc.tm_mon
