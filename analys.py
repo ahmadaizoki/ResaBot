@@ -130,8 +130,5 @@ def analyse_date(sentence):
                     re=re
                 if re==i:
                     break
-    if m<tm_mon:
-        date=datetime.date(tm_year+1,m,day)
-    else:
-        date=datetime.date(tm_year,m,day)
+    date=datetime.date(tm_year,m,day)
     return str(date)
