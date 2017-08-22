@@ -55,7 +55,8 @@ def api_message(text,user_id):
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
         elif date in config.prochain:
-            res=data_jour_semaine.jour_prochain(date)
+            date1=str(date)
+            res=data_jour_semaine.jour_prochain(date1)
             date=dd.time_calc(res)
         elif date in config.date_noel:
             time_loc=time.localtime()
