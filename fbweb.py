@@ -63,7 +63,7 @@ def get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode
     for i in config.room:
         res=requests.get("https://websdk.fastbooking-services.com/quotation/?arrivalDate="+arrivalDate+"&rate="+rate+"&nights="+nights+"&adults="+adults+"&roomRestriction="+i+"&property="+property+"&output="+output+"&accessCode="+accessCode+"&_authCode="+_authCode)
         resulta=res.json()
-        if len(resulta)!=0:
+        if len(resulta["data"])!=0:
             q_from=q_from+[resulta["data"][0]["bookingParams"]["from"]]
             q_to=q_to+[resulta["data"][0]["bookingParams"]["to"]]
             q_nights=q_nights+[resulta["data"][0]["nights"]]
