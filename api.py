@@ -54,7 +54,15 @@ def api_message(text,user_id):
         elif date in config.date_week_end:
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
-        elif date in config.prochain or date in config.prochain1 or date in prochain2:
+        elif date in config.prochain:
+            date1=str(date)
+            res=date_jour_semaine.jour_prochain(date1)
+            date=dd.time_calc(res)
+        elif date in config.prochain1:
+            date1=str(date)
+            res=date_jour_semaine.jour_prochain(date1)
+            date=dd.time_calc(res)
+        elif date in config.prochain2:
             date1=str(date)
             res=date_jour_semaine.jour_prochain(date1)
             date=dd.time_calc(res)
