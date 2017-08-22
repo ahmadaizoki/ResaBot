@@ -63,12 +63,13 @@ def get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode
     for i in config.room:
         res=requests.get("https://websdk.fastbooking-services.com/quotation/?arrivalDate="+arrivalDate+"&rate="+rate+"&nights="+nights+"&adults="+adults+"&roomRestriction="+i+"&property="+property+"&output="+output+"&accessCode="+accessCode+"&_authCode="+_authCode)
         resulta=res.json()
-        q_from=q_from+[resulta["data"][0]["bookingParams"]["from"]]
-        q_to=q_to+[resulta["data"][0]["bookingParams"]["to"]]
-        q_nights=q_nights+[resulta["data"][0]["nights"]]
-        q_adults=q_adults+[resulta["data"][0]["adults"]]
-        q_price=q_price+[resulta["data"][0]["totalPrice"]]
-        q_currency=q_currency+[resulta["data"][0]["currency"]]
-        q_BookLink=q_BookLink+[resulta["data"][0]["plainBookLink"]]
-        q_room=q_room+[resulta["data"][0]["room"]]
+        if len(resulta)!=0:
+            q_from=q_from+[resulta["data"][0]["bookingParams"]["from"]]
+            q_to=q_to+[resulta["data"][0]["bookingParams"]["to"]]
+            q_nights=q_nights+[resulta["data"][0]["nights"]]
+            q_adults=q_adults+[resulta["data"][0]["adults"]]
+            q_price=q_price+[resulta["data"][0]["totalPrice"]]
+            q_currency=q_currency+[resulta["data"][0]["currency"]]
+            q_BookLink=q_BookLink+[resulta["data"][0]["plainBookLink"]]
+            q_room=q_room+[resulta["data"][0]["room"]]
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
