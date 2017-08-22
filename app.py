@@ -9,6 +9,7 @@ from imp import reload
 import api
 import fbweb
 from fbmq import Template, Page
+import photo_room
 
 reload(sys)
 
@@ -117,9 +118,10 @@ def fb_receive_message():
                             q_currency=h_dispo[5]
                             q_BookLink=h_dispo[6]
                             q_room=h_dispo[7]
+                            photo=photo_room.photo(q_room)
                             template=[Template.GenericElement("Une "+q_room,
-                            item_url=conf.photo_chambre[0],
-                            image_url=conf.photo_chambre[0],
+                            item_url=photo,
+                            image_url=photo,
                             subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
@@ -158,18 +160,20 @@ def received_postback(event):
     template=[]
     if ln >10:
         for i in range(0,10):
+            photo=photo_room.photo(q_room[i])
             template=template+[Template.GenericElement("Une "+q_room[i],
-            item_url=conf.photo_chambre[i],
-            image_url=conf.photo_chambre[i],
+            item_url=photo,
+            image_url=photo,
             subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
             buttons=[
             Template.ButtonWeb("Réserver",q_BookLink[i])
             ])]
     else:
         for i in range (0,ln):
+            photo=photo_room.photo(q_room[i])
             template=template+[Template.GenericElement("Une "+q_room[i],
-            item_url=conf.photo_chambre[i],
-            image_url=conf.photo_chambre[i],
+            item_url=photo,
+            image_url=photo,
             subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
             buttons=[
             Template.ButtonWeb("Réserver",q_BookLink[i])

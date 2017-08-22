@@ -44,7 +44,6 @@ def api_message(text,user_id):
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
         date=date.lower()
-        print ("date "+date)
         if date in config.date0:
             date=dd.time_calc(0)
         elif date in config.date1:
