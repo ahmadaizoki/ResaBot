@@ -54,14 +54,11 @@ def api_message(text,user_id):
         elif date in config.date_week_end:
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
-        elif date =="lundi prochain":
+        elif date in config.prochain:
             print ("hello")
             date1=str(date)
-            print (date1)
-            res=data_jour_semaine.jour_prochain(date1)
-            print (res)
+            res=date_jour_semaine.jour_prochain(date1)
             date=dd.time_calc(res)
-            print (date)
         elif date in config.date_noel:
             time_loc=time.localtime()
             tm_mon=time_loc.tm_mon
