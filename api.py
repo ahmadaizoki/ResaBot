@@ -57,6 +57,7 @@ def api_message(text,user_id):
         elif date =="lundi prochain":
             print ("hello")
             date1=str(date)
+            print (date1)
             res=data_jour_semaine.jour_prochain(date1)
             print (res)
             date=dd.time_calc(res)
