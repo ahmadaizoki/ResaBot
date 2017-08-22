@@ -16,6 +16,7 @@ def analyse_date(sentence):
     print (sentence_words)
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
+    tm_mon=time_loc.tm_mon
     for mot1 in sentence_words:
         if mot1=="premier":
             i=1
@@ -129,5 +130,8 @@ def analyse_date(sentence):
                     re=re
                 if re==i:
                     break
-    date=datetime.date(tm_year,m,day)
+    if m<tm_mon:
+        date=datetime.date(tm_year+1,m,day)
+    else:
+        date=datetime.date(tm_year,m,day)
     return str(date)

@@ -13,6 +13,7 @@ import datetime
 from random import randint
 import analys
 import date_test
+import data_jour_semaine
 
 try:
     import apiai
@@ -53,6 +54,9 @@ def api_message(text,user_id):
         elif date in config.date_week_end:
             ddd=date_week.date_week()
             date=dd.time_calc(ddd)
+        elif date in config.prochain:
+            res=data_jour_semaine.jour_prochain(date)
+            date=dd.time_calc(res)
         elif date in config.date_noel:
             time_loc=time.localtime()
             tm_mon=time_loc.tm_mon
