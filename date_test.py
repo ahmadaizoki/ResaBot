@@ -3,6 +3,7 @@
 import time
 
 def test(date):
+    date=str(date)
     try:
         time.strptime(date,'%Y-%m-%d')
         date=date
@@ -15,4 +16,7 @@ def test(date):
             print (d[0])
         except:
             date=date
+    print (date)
     return date
+
+test("10-10-2017")
