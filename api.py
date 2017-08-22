@@ -12,6 +12,7 @@ import time
 import datetime
 from random import randint
 import analys
+import date_test
 
 try:
     import apiai
@@ -43,7 +44,7 @@ def api_message(text,user_id):
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
         date=date.lower()
-        date_inv=date[::-1]
+        date=date_test.test(date)
         if date in config.date0:
             date=dd.time_calc(0)
         elif date in config.date1:
