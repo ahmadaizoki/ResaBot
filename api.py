@@ -13,7 +13,7 @@ import datetime
 from random import randint
 import analys
 import date_test
-import data_jour_semaine
+import date_jour_semaine
 
 try:
     import apiai
