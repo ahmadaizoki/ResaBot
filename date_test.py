@@ -4,6 +4,7 @@ import time
 import datetime
 
 def test(date):
+    date=date_split(date)
     try:
         time.strptime(date,'%Y-%m-%d')
         date=date
@@ -15,4 +16,12 @@ def test(date):
             date=datetime.date(int(d[2]),int(d[1]),int(d[0]))
         except:
             date=date
+    return str(date)
+
+def date_split(date):
+    try:
+        d=date.split("/")
+        date=d[0]+"-"+d[1]+"-"+d[2]
+    except:
+        date=date
     return str(date)
