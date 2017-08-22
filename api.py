@@ -44,7 +44,6 @@ def api_message(text,user_id):
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
         date=date.lower()
-        date=date_test.test(date)
         if date in config.date0:
             date=dd.time_calc(0)
         elif date in config.date1:
@@ -81,6 +80,7 @@ def api_message(text,user_id):
                 date1=str(date)
                 date=analys.analyse_date(date1)
             except:
+                date=date_test.test(date)
                 date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
