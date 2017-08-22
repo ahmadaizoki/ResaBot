@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import time
 import datetime
+import date_jour_semaine
 
 def time_calc(day):
     time_loc=time.localtime()
@@ -40,3 +41,5 @@ def time_calc(day):
         tm_mon=tm_mon
     date=datetime.date(tm_year,tm_mon,tm_mday)
     return str(date)
+
+print (time_calc(date_jour_semaine.jour_prochain("lundi prochain")))

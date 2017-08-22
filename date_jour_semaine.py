@@ -41,3 +41,5 @@ def jour_prochain(sentence):
         else:
             res=(7-dd+6)%7
     return res
+
+print (jour_prochain("lundi prochain"))

@@ -58,7 +58,9 @@ def api_message(text,user_id):
             print ("hello")
             date1=str(date)
             res=data_jour_semaine.jour_prochain(date1)
+            print (res)
             date=dd.time_calc(res)
+            print (date)
         elif date in config.date_noel:
             time_loc=time.localtime()
             tm_mon=time_loc.tm_mon
