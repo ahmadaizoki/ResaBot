@@ -14,6 +14,8 @@ from random import randint
 import analys
 import date_test
 import date_jour_semaine
+import analyse_phrase
+import analyse_dans
 
 try:
     import apiai
@@ -45,6 +47,7 @@ def api_message(text,user_id):
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
         date=date.lower()
+        mot=analyse_phrase(date)
         if date in config.date0:
             date=dd.time_calc(0)
         elif date in config.date1:
@@ -66,6 +69,8 @@ def api_message(text,user_id):
             date1=str(date)
             res=date_jour_semaine.jour_prochain(date1)
             date=dd.time_calc(res)
+        elif mot=="dans":
+            date=analyse_dans.analyse_sentence(date)
         elif date in config.date_noel:
             time_loc=time.localtime()
             tm_mon=time_loc.tm_mon
