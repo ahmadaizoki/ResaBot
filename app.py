@@ -151,38 +151,43 @@ def fb_receive_message():
 def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
-    payload=payload.split(',')
-    h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
-    q_from=h_dispo[0]
-    q_to=h_dispo[1]
-    q_nights=h_dispo[2]
-    q_adults=h_dispo[3]
-    q_price=h_dispo[4]
-    q_currency=h_dispo[5]
-    q_BookLink=h_dispo[6]
-    q_room=h_dispo[7]
-    ln=len(q_from)
-    template=[]
-    if ln >10:
-        for i in range(0,10):
-            photo=photo_room.photo(q_room[i])
-            template=template+[Template.GenericElement("Une "+q_room[i],
-            item_url=photo,
-            image_url=photo,
-            subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
-            buttons=[
-            Template.ButtonWeb("Réserver",q_BookLink[i])
-            ])]
-    else:
-        for i in range (0,ln):
-            photo=photo_room.photo(q_room[i])
-            template=template+[Template.GenericElement("Une "+q_room[i],
-            item_url=photo,
-            image_url=photo,
-            subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
-            buttons=[
-            Template.ButtonWeb("Réserver",q_BookLink[i])
-            ])]
+    user_profile=page.get_useruprofile(event.sender_id)
+    print (user_profile)
+    try:
+        payload=payload.split(',')
+        h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
+        q_from=h_dispo[0]
+        q_to=h_dispo[1]
+        q_nights=h_dispo[2]
+        q_adults=h_dispo[3]
+        q_price=h_dispo[4]
+        q_currency=h_dispo[5]
+        q_BookLink=h_dispo[6]
+        q_room=h_dispo[7]
+        ln=len(q_from)
+        template=[]
+        if ln >10:
+            for i in range(0,10):
+                photo=photo_room.photo(q_room[i])
+                template=template+[Template.GenericElement("Une "+q_room[i],
+                item_url=photo,
+                image_url=photo,
+                subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
+                buttons=[
+                Template.ButtonWeb("Réserver",q_BookLink[i])
+                ])]
+        else:
+            for i in range (0,ln):
+                photo=photo_room.photo(q_room[i])
+                template=template+[Template.GenericElement("Une "+q_room[i],
+                item_url=photo,
+                image_url=photo,
+                subtitle="Pour "+str(q_nights[i])+" nuit(s) et "+str(q_adults[i])+" personne(s)"+"\n"+"Du "+q_from[i]+" au "+q_to[i]+" à partir de "+str(q_price[i])+" "+q_currency[i],
+                buttons=[
+                Template.ButtonWeb("Réserver",q_BookLink[i])
+                ])]
+    except:
+        page.send(user_id,"Bienvenue ")
     if payload[0]=="CHAMBRE_PAYLOAD":
         try:
             page.send(user_id,Template.Generic(template))
