@@ -8,7 +8,7 @@ import string
 from imp import reload
 import api
 import fbweb
-from fbmq import Template, Page
+from fbmq import Template, Page, QuickReplay
 import photo_room
 
 reload(sys)
@@ -132,6 +132,13 @@ def fb_receive_message():
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p" or intention=="r_i":
                         client.send_image(user_id,speech)
+                    elif intention=="smalltalk.greeting.hello":
+                        quick_replies=[
+                        QuickReplay(title="Photos",payload="PICK_PHOTOS"),
+                        QuickReplay(title="Offres",payload="PICK_OFFRES"),
+                        QuickReplay(title="Réserver une chambre",payload="PICK_RESERVATION")
+                        ]
+                        page.send(user_id,"Bonjour! Voilà ce que je peux faire pour vous :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     else:
                         client.send_text(user_id,speech)
                 except:
