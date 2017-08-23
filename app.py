@@ -46,9 +46,12 @@ def fb_receive_message():
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
-                    user_first_name=user_profile["first_name"].lower()
-                    user_last_name=user_profile["last_name"].lower()
+                    user_first_name=user_profile["first_name"]
+                    user_last_name=user_profile["last_name"]
+                    user_first_name_l=user_first_name.lower()
+                    user_last_name_l=user_last_name.lower()
                     user=user_first_name+" "+user_last_name
+                    user_l=user_first_name_l+" "+user_last_name_l
                     print (text)
                     res=api.api_message(text,user_id)
                     speech=res[0]
@@ -129,7 +132,7 @@ def fb_receive_message():
                             subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
                             buttons=[
                             Template.ButtonWeb("Réserver",q_BookLink),
-                            Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(date)+","+str(nights)+","+str(adults))#more_room(user_id,date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token))
+                            Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(date)+","+str(nights)+","+str(adults))
                             ])]
                             page.send(user_id,Template.Generic(template))
                         except:
@@ -138,7 +141,7 @@ def fb_receive_message():
                         client.send_image(user_id,speech)
                     elif intention=="r_i":
                         chaine=res[2]
-                        if chaine==user_first_name or chaine==user_last_name or chaine==user:
+                        if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or user_l:
                             client.send_text(user_id,"C'est toi! :) Tu crois que j'ai pas les pouvoirs de te connaitre")
                         else:
                             client.send_image(user_id,speech)
