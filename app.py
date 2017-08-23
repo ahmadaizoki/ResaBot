@@ -152,7 +152,7 @@ def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
     user_profile=page.get_user_profile(user_id)
-    print (user_profile["first_name"]+" "+user_profile["last_name"])
+    user=user_profile["first_name"]+" "+user_profile["last_name"]
     try:
         payload=payload.split(',')
         h_dispo=fbweb.get_quotation_room(payload[1],"",payload[2],payload[3],conf.HID,"json","",conf.H_Access_Token)
@@ -187,7 +187,7 @@ def received_postback(event):
                 Template.ButtonWeb("Réserver",q_BookLink[i])
                 ])]
     except:
-        page.send(user_id,"Bienvenue ")
+        page.send(user_id,"Bienvenue "+user+"!")
     if payload[0]=="CHAMBRE_PAYLOAD":
         try:
             page.send(user_id,Template.Generic(template))
