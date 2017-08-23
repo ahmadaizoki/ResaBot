@@ -36,16 +36,10 @@ def api_message(text,user_id):
     request = ai.text_request()
     request.lang = 'fr'
     request.session_id = user_id
-    if text=="ahmad":
-        request.resetContexts=True
-        request.query = text
-        response = request.getresponse()
-    else:
-        request.query = text
-        response = request.getresponse()
+    request.query = text
+    response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
-    print (res)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
