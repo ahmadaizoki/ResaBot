@@ -107,10 +107,16 @@ def api_message(text,user_id):
                     date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
-    elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p" or intention=="r_i":
+    elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
         ln=len(res['result']['fulfillment']['messages'])
         i=randint(0,ln-1)
         speech=res['result']['fulfillment']['messages'][i]['imageUrl']
         return ([speech]+[intention])
+    elif intention=="r_i":
+        ln=len(res['result']['fulfillment']['messages'])
+        i=randint(0,ln-1)
+        speech=res['result']['fulfillment']['messages'][i]['imageUrl']
+        chaine=res['result']['parameters']['chaine']
+        return ([speech]+[intention]+[chaine])
     else:
         return ([speech]+[intention])
