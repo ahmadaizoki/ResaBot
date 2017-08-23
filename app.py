@@ -141,7 +141,7 @@ def fb_receive_message():
                         client.send_image(user_id,speech)
                     elif intention=="r_i":
                         chaine=res[2]
-                        if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or user_l:
+                        if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or chaine==user_l:
                             client.send_text(user_id,"C'est toi! :) Tu crois que j'ai pas les pouvoirs de te connaitre")
                         else:
                             client.send_image(user_id,speech)
