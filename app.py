@@ -151,7 +151,7 @@ def fb_receive_message():
 def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]
-    user_profile=page.get_user_profile(event.sender_id)
+    user_profile=page.get_user_profile(user_id)
     print (user_profile)
     try:
         payload=payload.split(',')
