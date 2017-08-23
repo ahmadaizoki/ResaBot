@@ -45,6 +45,7 @@ def api_message(text,user_id):
         response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
+    print (res)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
