@@ -67,7 +67,7 @@ def analyse_sentence(sentence):
             else:
                 tm_mon=tm_mon
             try:
-                res=datetime.date(tm_year,tm_mon,tm_mday)
+                res=str(datetime.date(tm_year,tm_mon,tm_mday))
             except:
                 res=str(datetime(tm_year,tm_mon,30))
     return res
