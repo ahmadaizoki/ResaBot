@@ -132,7 +132,7 @@ def fb_receive_message():
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p" or intention=="r_i":
                         client.send_image(user_id,speech)
-                    elif intention=="smalltalk.greeting.hello":
+                    elif intention=="smalltalk.greetings.hello":
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
                         QuickReply(title="Offres",payload="PICK_OFFRES"),
