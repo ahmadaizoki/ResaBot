@@ -41,11 +41,13 @@ def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
         for message in entry['messaging']:
+            print (message)
             if message.get('message'):
                 try:
                     print (message)
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
+                    reci
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
                     user_last_name=user_profile["last_name"]
