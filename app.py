@@ -47,7 +47,7 @@ def fb_receive_message():
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
-                    seq="{message[seq]}".format(**message)
+                    seq=message.get("seq",0)
                     print (recipient)
                     print (seq)
                     seq_id=user_id+":"+recipient
