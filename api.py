@@ -45,10 +45,10 @@ def api_message(text,user_id):
     try:
         nights=nuits_personnes.nights_test(resolvedQuery)
         request1 = ai.text_request()
-        #request.lang = 'fr'
-        #request.session_id = user_id
+        request1.lang = 'fr'
+        request1.session_id = user_id
         #text="chambre pour "+str(nights)+" nuits"
-        #request.query=text
+        request1.query="text"
         request1.restContexts=True
         response = request1.getresponse()
         resau=response.read().decode('utf-8')
