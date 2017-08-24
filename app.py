@@ -43,6 +43,7 @@ def fb_receive_message():
         for message in entry['messaging']:
             if message.get('message'):
                 try:
+                    print (message)
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
