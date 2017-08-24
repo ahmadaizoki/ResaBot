@@ -42,18 +42,18 @@ def fb_receive_message():
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
-                seq=message.get("seq")
                 try:
                     print (message)
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
+                    recipient="{message[seq]}".format(**message)
                     print (recipient)
                     print (seq)
                     seq_id=user_id+":"+recipient
                     if USER_SEQ.get(seq_id,-1) >= seq:
                         print ("Ignore duplicated request")
-                        return (" ")
+                        return None
                     else:
                         USER_SEQ[seq_id]=seq
                     user_profile=page.get_user_profile(user_id)
