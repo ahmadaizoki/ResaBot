@@ -37,7 +37,6 @@ def fb_webhook():
 
 
 @app.route('/webhook', methods=['POST'])
-@page.handle_message
 def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
@@ -48,7 +47,7 @@ def fb_receive_message():
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
-                    recipient="{message[seq]}".format(**message)
+                    seq="{message[seq]}".format(**message)
                     print (recipient)
                     print (seq)
                     seq_id=user_id+":"+recipient
