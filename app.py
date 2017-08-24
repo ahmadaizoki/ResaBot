@@ -10,6 +10,7 @@ import api
 import fbweb
 from fbmq import Template, Page, QuickReply
 import photo_room
+import nuits_personnes
 
 reload(sys)
 
