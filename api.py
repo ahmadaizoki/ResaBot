@@ -16,6 +16,7 @@ import date_test
 import date_jour_semaine
 import analyse_phrase
 import analyse_dans
+import nuits_personnes
 
 try:
     import apiai
@@ -40,6 +41,20 @@ def api_message(text,user_id):
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
+    resolvedQuery=res['result']['resolvedQuery']
+    try:
+        result=nuits_personnes.nights_test(resolvedQuery)
+        request = ai.text_request()
+        request.lang = 'fr'
+        request.session_id = user_id
+        request.query = ""
+        request.contexts.parameters.nbnight=result
+        request.contexts.parameters.nbpax=""
+        response = request.getresponse()
+        resau=response.read().decode('utf-8')
+        res=json.loads(resau)
+    except:
+        res=res
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
