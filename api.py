@@ -38,7 +38,7 @@ def api_message(text,user_id):
     request.lang = 'fr'
     request.session_id = user_id
     request.query = text
-    request.restContexts="true"
+    request.restContexts="True"
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
@@ -50,7 +50,7 @@ def api_message(text,user_id):
         request1.session_id = user_id
         text="chambre pour "+str(nights)+" nuits"
         request1.query=text
-        request1.restContexts="true"
+        request1.restContexts="True"
         response = request1.getresponse()
         resau=response.read().decode('utf-8')
         res=json.loads(resau)
