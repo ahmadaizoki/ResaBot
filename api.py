@@ -38,7 +38,7 @@ def api_message(text,user_id):
     request.lang = 'fr'
     request.session_id = user_id
     request.query = text
-    print (request)
+    print (request.contexts)
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
