@@ -44,6 +44,9 @@ def api_message(text,user_id):
     resolvedQuery=res['result']['resolvedQuery']
     try:
         nights=nuits_personnes.nights_test(resolvedQuery)
+        request = ai.text_request()
+        request.lang = 'fr'
+        request.session_id = user_id
         request.restContexts=True
         response=request.getresponse()
         request = ai.text_request()
@@ -54,6 +57,7 @@ def api_message(text,user_id):
         response = request.getresponse()
         resau=response.read().decode('utf-8')
         res=json.loads(resau)
+        print (res)
     except:
         res=res
     speech=res['result']['fulfillment']['speech']
