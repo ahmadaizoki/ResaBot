@@ -12,7 +12,8 @@ def nights_test(sentence):
     for mot in range (0,ln):
         if sentence_words[mot]=="nuits" or sentence_words[mot] =="nuit":
             res=sentence_words[mot-1]
-    return res
+            return True
+    return False
 
 def personnes_test(sentence):
     sentence1=unicodedata.normalize('NFD',sentence).encode('ascii','ignore')

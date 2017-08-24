@@ -44,6 +44,11 @@ def api_message(text,user_id):
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
+        try:
+            contexts=res['result']['contexts'][1]['name']
+            resolvedQuery=res['result']['resolvedQuery']
+        except:
+            contexts=""
         date=res['result']['parameters']['date']
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
@@ -107,7 +112,7 @@ def api_message(text,user_id):
                 except:
                     date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
-        return ([speech]+[intention]+[date]+[nights]+[adults])
+        return ([speech]+[intention]+[date]+[nights]+[adults]+[contexts]+[resolvedQuery])
     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
         ln=len(res['result']['fulfillment']['messages'])
         i=randint(0,ln-1)
