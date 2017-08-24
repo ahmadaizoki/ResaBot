@@ -42,7 +42,7 @@ def fb_receive_message():
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
-                seq=message.get("seq",0)
+                seq=message.get("seq")
                 try:
                     print (message)
                     user_id="{sender[id]}".format(**message)
