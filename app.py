@@ -46,7 +46,7 @@ def fb_receive_message():
                     user_id="{sender[id]}".format(**message)
                     #recipient_id="{recipient[id]}".format(**message)
                     seq=message.get("seq",0)
-                    seq_id=user_id+":"#+recipient_id
+                    seq_id=user_id#+":"+recipient_id
                     if USER_SEQ.get(seq_id,-1)>=seq:
                         print ("Ignore duplicated request")
                         return None
