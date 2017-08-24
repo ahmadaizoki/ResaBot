@@ -34,12 +34,6 @@ ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 ###############################################
 #detecter l'intention de API.AI
 def api_message(text,user_id):
-    try:
-        text_totall=text.split(",")
-        text=text_totall[0]
-        text1=text_totall[1]
-    except:
-        text=text
     request = ai.text_request()
     request.lang = 'fr'
     request.session_id = user_id
@@ -47,10 +41,6 @@ def api_message(text,user_id):
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
-    try:
-        api_message(text1,user_id)
-    except:
-        res=res
     print (res)
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
@@ -123,7 +113,7 @@ def api_message(text,user_id):
                 except:
                     date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
-        return ([speech]+[intention]+[date]+[nights]+[adults]+[contexts]+[resolvedQuery])
+        return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
         ln=len(res['result']['fulfillment']['messages'])
         i=randint(0,ln-1)

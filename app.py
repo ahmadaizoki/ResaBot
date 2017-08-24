@@ -10,7 +10,6 @@ import api
 import fbweb
 from fbmq import Template, Page, QuickReply
 import photo_room
-import nuits_personnes
 
 reload(sys)
 
@@ -114,10 +113,6 @@ def fb_receive_message():
                             client.send_text(user_id,conf.message_pas_offres)
                     elif intention=="h_dispo":
                         try:
-                            contexts=res[5]
-                            resolvedQuery=res[6]
-                            if contexts=="hotel_disp_dialog_params_nbnight" and nuits_personnes.nights_test(resolvedQuery)==True:
-                                api.api_message("Annuler,chambre pour 2 nuits",user_id)
                             date=res[2]
                             nights=res[3]
                             adults=res[4]
