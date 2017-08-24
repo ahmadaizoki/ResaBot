@@ -117,7 +117,7 @@ def fb_receive_message():
                             contexts=res[5]
                             resolvedQuery=res[6]
                             if contexts=="hotel_disp_dialog_params_nbnight" and nuits_personnes.nights_test(resolvedQuery)==True:
-                                api.api_message("Annuler,"+resolvedQuery,user_id)
+                                api.api_message("Annuler,chambre pour 2 nuits",user_id)
                                 break
                             date=res[2]
                             nights=res[3]
