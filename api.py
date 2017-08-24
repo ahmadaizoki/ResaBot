@@ -38,25 +38,9 @@ def api_message(text,user_id):
     request.lang = 'fr'
     request.session_id = user_id
     request.query = text
-    request.restContexts=True
     response = request.getresponse()
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
-    resolvedQuery=res['result']['resolvedQuery']
-    try:
-        nights=nuits_personnes.nights_test(resolvedQuery)
-        request1 = ai.text_request()
-        request1.lang = 'fr'
-        request1.session_id = user_id
-        text="chambre pour "+str(nights)+" nuits"
-        request1.query=text
-        request1.restContexts=True
-        response = request1.getresponse()
-        resau=response.read().decode('utf-8')
-        res=json.loads(resau)
-        print (res)
-    except:
-        res=res
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
