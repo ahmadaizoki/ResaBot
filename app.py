@@ -50,6 +50,8 @@ def fb_receive_message():
                     if USER_SEQ.get(seq_id,-1)>=seq:
                         print ("Ignore duplicated request")
                         return None
+                    else:
+                        USER_SEQ[seq_id]=seq
                     text="{message[text]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
