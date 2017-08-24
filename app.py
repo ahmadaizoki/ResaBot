@@ -20,7 +20,7 @@ page = Page(conf.fb_access_token)
 
 app = Flask(__name__)
 
-
+USER_SEQ={}
 #########################################################################
 #facebook bot
 
