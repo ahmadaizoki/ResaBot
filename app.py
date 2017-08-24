@@ -52,7 +52,7 @@ def fb_receive_message():
                 seq_id=user_id+":"+recipient
                 if USER_SEQ.get(seq_id,-1) >= seq:
                     print ("Ignore duplicated request")
-                    return None
+                    return "ok"
                 else:
                     USER_SEQ[seq_id]=seq
                 try:
