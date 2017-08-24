@@ -40,10 +40,9 @@ def fb_webhook():
 def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
-        message11=entry.message
-        seq=message11.get("seq",0)
         for message in entry['messaging']:
             if message.get('message'):
+                seq=message.get("seq",0)
                 try:
                     print (message)
                     user_id="{sender[id]}".format(**message)
