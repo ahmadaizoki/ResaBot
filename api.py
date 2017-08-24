@@ -48,13 +48,7 @@ def api_message(text,user_id):
     resau=response.read().decode('utf-8')
     res=json.loads(resau)
     try:
-        request = ai.text_request()
-        request.lang = 'fr'
-        request.session_id = user_id
-        request.query = text1
-        response = request.getresponse()
-        resau=response.read().decode('utf-8')
-        res=json.loads(resau)
+        api_message(text1,user_id)
     except:
         res=res
     print (res)
