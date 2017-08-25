@@ -5,6 +5,7 @@ import sys
 import config
 import json
 import requests
+import date
 
 def get_offers(output,property,orderBy,locale,currency,_authcode):
     res=requests.get("https://websdk.fastbooking-services.com/offers/?output="+output+"&property="+property+"&orderBy="+orderBy+"&locale="+locale+"&currency="+currency+"&_authCode="+_authcode)
