@@ -44,11 +44,6 @@ def api_message(text,user_id):
     speech=res['result']['fulfillment']['speech']
     intention=res['result']['action']
     if intention=="h_dispo":
-        try:
-            contexts=res['result']['contexts'][1]['name']
-            resolvedQuery=res['result']['resolvedQuery']
-        except:
-            contexts=""
         date=res['result']['parameters']['date']
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
@@ -113,6 +108,74 @@ def api_message(text,user_id):
                     date=res['result']['parameters']['date']
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
+    elif intention=="nouvelle_date":
+        try:
+            date=res['result']['parameters']['ndate']
+            nights=res['result']['contexts'][0]['parameters']['nbnight']
+            adults=res['result']['contexts'][0]['parameters']['nbpax']
+            date=date.lower()
+            if date!="":
+                mot=analyse_phrase.analyse(date)
+            else:
+                mot=""
+            if date in config.date0:
+                date=dd.time_calc(0)
+            elif date in config.date1:
+                date=dd.time_calc(1)
+            elif date in config.date2:
+                date=dd.time_calc(2)
+            elif date in config.date_week_end:
+                ddd=date_week.date_week()
+                date=dd.time_calc(ddd)
+            elif date in config.prochain:
+                date1=str(date)
+                res=date_jour_semaine.jour_prochain(date1)
+                date=dd.time_calc(res)
+            elif date in config.prochain1:
+                date1=str(date)
+                res=date_jour_semaine.jour_prochain(date1)
+                date=dd.time_calc(res)
+            elif date in config.prochain2:
+                date1=str(date)
+                res=date_jour_semaine.jour_prochain(date1)
+                date=dd.time_calc(res)
+            elif mot=="dans":
+                date=analyse_dans.analyse_sentence(date)
+            elif date in config.date_noel:
+                time_loc=time.localtime()
+                tm_mon=time_loc.tm_mon
+                tm_mday=time_loc.tm_mday
+                tm_year=time_loc.tm_year
+                if tm_mon==12 and tm_mday>25:
+                    d=datetime.date(tm_year+1,12,25)
+                    date=str(d)
+                else:
+                    d=datetime.date(tm_year,12,25)
+                    date=str(d)
+            elif date in config.date_valentin:
+                time_loc=time.localtime()
+                tm_mon=time_loc.tm_mon
+                tm_mday=time_loc.tm_mday
+                tm_year=time_loc.tm_year
+                if tm_mon>=2 and tm_mday>14:
+                    d=datetime.date(tm_year+1,2,14)
+                    date=str(d)
+                else:
+                    d=datetime.date(tm_year,2,14)
+                    date=str(d)
+            else:
+                try:
+                    date1=str(date)
+                    date=analys.analyse_date(date1)
+                except:
+                    try:
+                        date=date_test.test(date)
+                    except:
+                        date=res['result']['parameters']['date']
+            print ([speech]+[intention]+[date]+[nights]+[adults])
+            return ([speech]+[intention]+[date]+[nights]+[adults])
+        except:
+            return ([speech]+[intention])
     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
         ln=len(res['result']['fulfillment']['messages'])
         i=randint(0,ln-1)
