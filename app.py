@@ -153,6 +153,13 @@ def fb_receive_message():
                         QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
                         ]
                         page.send(user_id,"Bonjour! Voilà une petite liste de ce que je peux faire pour vous :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                    elif intention=="s_f":
+                        quick_replies=[
+                        QuickReply(title="Photos",payload="PICK_PHOTOS"),
+                        QuickReply(title="Offres",payload="PICK_OFFRES"),
+                        QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
+                        ]
+                        page.send(user_id,"Voilà une petite liste de ce que je peux faire pour vous :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     else:
                         client.send_text(user_id,speech)
                 except:
