@@ -238,7 +238,8 @@ def received_postback(event):
                 Template.ButtonWeb("Réserver",q_BookLink[i])
                 ])]
     except:
-        print ("PAYLOAD")
+        payload=event["postback"]["payload"]
+        print (payload)
     if payload[0]=="CHAMBRE_PAYLOAD":
         try:
             page.send(user_id,Template.Generic(template))
