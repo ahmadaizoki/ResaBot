@@ -72,7 +72,7 @@ def fb_receive_message():
                                     subtitle=alt[i])]
                                 template=template+[Template.GenericElement("Gallery",
                                 buttons=[
-                                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD,"+str(url)+","+str(alt))
+                                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD")
                                 ])]
                             else:
                                 for i in range (0,ln):
