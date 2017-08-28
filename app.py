@@ -280,7 +280,6 @@ def received_postback(event):
             url=gallery[0]
             alt=gallery[1]
             ln=len(url)
-            print (ln)
             template=[]
             if ln>28:
                 for j in range (17,26):
@@ -291,10 +290,32 @@ def received_postback(event):
                 template=template+[Template.GenericElement("Gallery",
                 subtitle="Pour voir plus de photos",
                 buttons=[
-                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD1")
+                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD2")
                 ])]
             else:
                 for i in range (17,ln):
+                    template=template+[Template.GenericElement("Gallery",
+                    item_url=url[i],
+                    image_url=url[i],
+                    subtitle=alt[i])]
+            page.send(user_id,Template.Generic(template))
+        except:
+            page.send(user_id.conf.message_data_null)
+    elif payload=="PHOTO_PAYLOAD2":
+        try:
+            gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
+            url=gallery[0]
+            alt=gallery[1]
+            ln=len(url)
+            template=[]
+            if ln>37:
+                for j in range (26,36):
+                    template=template+[Template.GenericElement("Gallery",
+                    item_url=url[j],
+                    image_url=url[j],
+                    subtitle=alt[j])]
+            else:
+                for i in range (26,ln):
                     template=template+[Template.GenericElement("Gallery",
                     item_url=url[i],
                     image_url=url[i],
