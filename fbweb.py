@@ -88,13 +88,11 @@ def moins_cher(arrivalDate,rate,nights,adults,property,output,accessCode,_authCo
     q_BookLink=[]
     q_room=[]
     for i in date2:
-        print (i)
         res=requests.get("https://websdk.fastbooking-services.com/quotation/?arrivalDate="+i+"&rate="+rate+"&nights="+nights+"&adults="+adults+"&property="+property+"&output="+output+"&accessCode="+accessCode+"&_authCode="+_authCode)
         resulta=res.json()
         if len(resulta["data"])!=0:
             q_price1=resulta["data"][0]["totalPrice"]
             if q_price1 < q_price:
-                print('j=hahaha')
                 q_price=q_price1
                 q_from=resulta["data"][0]["bookingParams"]["from"]
                 q_to=resulta["data"][0]["bookingParams"]["to"]
