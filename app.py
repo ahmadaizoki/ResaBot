@@ -138,6 +138,31 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                         except:
                             client.send_text(user_id,speech)
+                    elif intention=="Moins_cher":
+                        try:
+                            date=res[2]
+                            nights=res[3]
+                            adults=res[4]
+                            h_dispo=fbweb.moins_cher(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
+                            q_from=h_dispo[0]
+                            q_to=h_dispo[1]
+                            q_nights=h_dispo[2]
+                            q_adults=h_dispo[3]
+                            q_price=h_dispo[4]
+                            q_currency=h_dispo[5]
+                            q_BookLink=h_dispo[6]
+                            q_room=h_dispo[7]
+                            photo=photo_room.photo(q_room)
+                            template=[Template.GenericElement("Une "+q_room,
+                            item_url=photo,
+                            image_url=photo,
+                            subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+                            buttons=[
+                            Template.ButtonWeb("Réserver",q_BookLink)
+                            ])]
+                            page.send(user_id,Template.Generic(template))
+                        except:
+                            client.send_text(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
                         client.send_image(user_id,speech)
                     elif intention=="r_i":
