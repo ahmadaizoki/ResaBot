@@ -238,14 +238,18 @@ def received_postback(event):
                 Template.ButtonWeb("Réserver",q_BookLink[i])
                 ])]
     except:
-        page.send(user_id,"Bienvenue "+user+"!")
+        try:
+            if payload=="PHOTO_PAYLOAD":
+                me="ok"
+        except:
+            page.send(user_id,"Bienvenue "+user+"!")
     if payload[0]=="CHAMBRE_PAYLOAD":
         try:
             page.send(user_id,Template.Generic(template))
         except:
             page.send(user_id.conf.message_data_null)
     elif payload=="PHOTO_PAYLOAD":
-        page.send(user_id,"ok")
+        page.send(user_id,me)
 ########################################################################
 if __name__ == '__main__':
     app.run()
