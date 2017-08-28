@@ -104,6 +104,6 @@ def moins_cher(arrivalDate,rate,nights,adults,property,output,accessCode,_authCo
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
 
 def get_fb_user(user_id,accessCode):
-    res=requests.get("https://graph.facebook.com/v2.6/<user_id>?access_token="accessCode)
+    res=requests.get("https://graph.facebook.com/v2.6/user_id?access_token="accessCode)
     resulta=res.json()
     print (resulta)
