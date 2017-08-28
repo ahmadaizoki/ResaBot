@@ -96,11 +96,11 @@ def moins_cher(arrivalDate,rate,nights,adults,property,output,accessCode,_authCo
             if q_price1 < q_price:
                 print('j=hahaha')
                 q_price=q_price1
-                q_from=[resulta["data"][0]["bookingParams"]["from"]]
-                q_to=[resulta["data"][0]["bookingParams"]["to"]]
-                q_nights=[resulta["data"][0]["nights"]]
-                q_adults=[resulta["data"][0]["adults"]]
-                q_currency=[resulta["data"][0]["currency"]]
-                q_BookLink=[resulta["data"][0]["plainBookLink"]]
-                q_room=[resulta["data"][0]["room"]]
+                q_from=resulta["data"][0]["bookingParams"]["from"]
+                q_to=resulta["data"][0]["bookingParams"]["to"]
+                q_nights=resulta["data"][0]["nights"]
+                q_adults=resulta["data"][0]["adults"]
+                q_currency=resulta["data"][0]["currency"]
+                q_BookLink=resulta["data"][0]["plainBookLink"]
+                q_room=resulta["data"][0]["room"]
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
