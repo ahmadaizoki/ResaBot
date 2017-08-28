@@ -65,11 +65,15 @@ def fb_receive_message():
                             ln=len(url)
                             template=[]
                             if ln>10:
-                                for i in range (0,10):
+                                for i in range (0,9):
                                     template=template+[Template.GenericElement("Gallery",
                                     item_url=url[i],
                                     image_url=url[i],
                                     subtitle=alt[i])]
+                                template=template+[Template.GenericElement("Gallery",
+                                buttons=[
+                                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD,"+str(url)+","+str(alt))
+                                ])]
                             else:
                                 for i in range (0,ln):
                                     template=template+[Template.GenericElement("Gallery",
