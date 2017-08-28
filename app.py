@@ -260,11 +260,11 @@ def received_postback(event):
                     item_url=url[j],
                     image_url=url[j],
                     subtitle=alt[j])]
-                    template=template+[Template.GenericElement("Gallery",
-                    subtitle="Pour voir plus de photos",
-                    buttons=[
-                    Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD1")
-                    ])]
+                template=template+[Template.GenericElement("Gallery",
+                subtitle="Pour voir plus de photos",
+                buttons=[
+                Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD1")
+                ])]
             else:
                 for i in range (9,ln):
                     template=template+[Template.GenericElement("Gallery",
