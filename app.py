@@ -246,7 +246,6 @@ def received_postback(event):
         except:
             page.send(user_id.conf.message_data_null)
     elif payload=="START_PAYLOAD":
-        r=fbweb.get_user_profile(user_id,conf.fb_access_token)
         page.send(user_id,"Bienvenue "+user+"!")
     elif payload=="PHOTO_PAYLOAD":
         try:
