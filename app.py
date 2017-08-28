@@ -244,6 +244,9 @@ def received_postback(event):
             page.send(user_id,Template.Generic(template))
         except:
             page.send(user_id.conf.message_data_null)
+    elif payload=="PHOTO_PAYLOAD":
+        try:
+            page.send(user_id,"ok")
 ########################################################################
 if __name__ == '__main__':
     app.run()
