@@ -71,6 +71,7 @@ def fb_receive_message():
                                     image_url=url[i],
                                     subtitle=alt[i])]
                                 template=template+[Template.GenericElement("Gallery",
+                                subtitle="Pour voir plus de photos"
                                 buttons=[
                                 Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD")
                                 ])]
