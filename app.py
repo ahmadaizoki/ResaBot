@@ -248,7 +248,32 @@ def received_postback(event):
     elif payload=="START_PAYLOAD":
         page.send(user_id,"Bienvenue "+user+"!")
     elif payload=="PHOTO_PAYLOAD":
-        page.send(user_id,"ok!")
+        try:
+            gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
+            url=gallery[0]
+            alt=gallery[1]
+            ln=len(url)
+            template=[]
+            if ln>19:
+                for j in range (9,17):
+                    template=template+[Template.GenericElement("Gallery",
+                    item_url=url[j],
+                    image_url=url[j],
+                    subtitle=alt[j])]
+                    template=template+[Template.GenericElement("Gallery",
+                    subtitle="Pour voir plus de photos",
+                    buttons=[
+                    Template.ButtonPostBack("Plus de photos","PHOTO_PAYLOAD1")
+                    ])]
+            else:
+                for i in range (9,ln):
+                    template=template+[Template.GenericElement("Gallery",
+                    item_url=url[i],
+                    image_url=url[i],
+                    subtitle=alt[i])]
+            page.send(user_id,Template.Generic(template))
+        except:
+            page.send(user_id.conf.message_data_null)
 ########################################################################
 if __name__ == '__main__':
     app.run()
