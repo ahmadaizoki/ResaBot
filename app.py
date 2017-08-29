@@ -10,6 +10,7 @@ import api
 import fbweb
 from fbmq import Template, Page, QuickReply
 import photo_room
+import offre
 
 reload(sys)
 
@@ -141,6 +142,15 @@ def fb_receive_message():
                             Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(date)+","+str(nights)+","+str(adults))
                             ])]
                             page.send(user_id,Template.Generic(template))
+                            try:
+                                res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
+                                res_offre_of=res_offre[0]
+                                res_offre_nom=res_offre[1]
+                                if res_offre_of!="":
+                                    message_offre="Si tu souhaite il y a un offre "+res_offre_of+" qui est: "+res_offre_nom
+                                    page.send(user_id,message_offre)
+                            except:
+                                print ("erreur offre")
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="Moins_cher":
