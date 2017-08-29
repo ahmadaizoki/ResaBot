@@ -105,6 +105,17 @@ def api_message(text,user_id):
                     date=date_test.test(date)
                 except:
                     date=res['result']['parameters']['date']
+        if date!="" and nights!="" and adults!="":
+            message_text="l'original nombre de personnes "+str(adults)+" et nombre de nuits "+str(nights)+" et la date "+str(date)
+            request1 = ai.text_request()
+            request1.lang = 'fr'
+            request1.session_id = user_id
+            request.query = message_text
+            response1 = request1.getresponse()
+            resau1=response1.read().decode('utf-8')
+            res1=json.loads(resau1)
+            print ("ahmad")
+            print (res1)
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults])
     elif intention=="nouvelle_date" or intention=="nombre_nuits" or intention=="nombre_personnes" or intention=="Moins_cher":
