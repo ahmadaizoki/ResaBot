@@ -192,7 +192,7 @@ def fb_receive_message():
                         QuickReply(title="Offres",payload="PICK_OFFRES"),
                         QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
                         ]
-                        page.send(user_id,"Bonjour "+user_first_name"! Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                        page.send(user_id,"Bonjour "+user_first_name+"! Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     elif intention=="s_f":
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
