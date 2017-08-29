@@ -182,9 +182,9 @@ def api_message(text,user_id):
             return ([speech]+[intention])
     elif intention=="Changement_avis":
         try:
-            date=res['result']['parameters']['ddate']
-            nights=res['result']['parameters']['nnnight']
-            adults=res['result']['parameters']['nnpax']
+            date=res['result']['contexts'][0]['parameters']['ddate']
+            nights=res['result']['contexts'][0]['parameters']['nnnight']
+            adults=res['result']['contexts'][0]['parameters']['nnpax']
             date=date.lower()
             if date!="":
                 mot=analyse_phrase.analyse(date)
