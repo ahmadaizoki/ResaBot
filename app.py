@@ -117,7 +117,7 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                         except:
                             client.send_text(user_id,conf.message_pas_offres)
-                    elif intention=="h_dispo" or intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits":
+                    elif intention=="h_dispo" or intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits" or intention=="Changement_avis":
                         try:
                             date=res[2]
                             nights=res[3]
