@@ -53,7 +53,7 @@ def fb_receive_message():
                     user_last_name_l=user_last_name.lower()
                     user=user_first_name+" "+user_last_name
                     user_l=user_first_name_l+" "+user_last_name_l
-                    print (text)
+                    #print (text)
                     res=api.api_message(text,user_id)
                     speech=res[0]
                     intention=res[1]
