@@ -109,7 +109,7 @@ def api_message(text,user_id):
             message_text="l'original nombre de personnes "+str(adults)+" et nombre de nuits "+str(nights)+" et la date "+str(date)
             request1 = ai.text_request()
             request1.lang = 'fr'
-            request1.session_id = user_id+1
+            request1.session_id = user_id+'11'
             request.query = message_text
             response1 = request1.getresponse()
             resau1=response1.read().decode('utf-8')
