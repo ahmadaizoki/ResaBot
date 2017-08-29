@@ -147,7 +147,7 @@ def fb_receive_message():
                                 res_offre_of=res_offre[0]
                                 res_offre_nom=res_offre[1]
                                 if res_offre_of!="":
-                                    message_offre="Si tu souhaite il y a un offre "+res_offre_of+" qui est: "+res_offre_nom
+                                    message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom
                                     page.send(user_id,message_offre)
                             except:
                                 print ("erreur offre")
