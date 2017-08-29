@@ -1,1 +1,1 @@
-stemmers
+tokenizers
