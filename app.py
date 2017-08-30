@@ -11,8 +11,7 @@ import fbweb
 from fbmq import Template, Page, QuickReply
 import photo_room
 import offre
-import time
-import threading
+import user_table
 
 reload(sys)
 
@@ -50,6 +49,8 @@ def fb_receive_message():
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
+                    timestamp="{timestamp}".format(**message)
+                    user_table.users(user_id,timestamp)
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
                     user_last_name=user_profile["last_name"]
