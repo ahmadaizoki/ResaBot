@@ -41,13 +41,15 @@ def fb_webhook():
 
 @app.route('/webhook', methods=['POST'])
 def fb_receive_message():
-    threading.Timer(60,foo).start()
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
                 try:
                     user_id="{sender[id]}".format(**message)
+                    while True:
+                        threading.Timer(60,foo(user_id)).start()
+                        time.sleep(60)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
@@ -341,8 +343,9 @@ def received_postback(event):
         except:
             page.send(user_id.conf.message_data_null)
 
-def foo():
+def foo(user_id):
     print (time.ctime())
+    page.send(user_id,"coucou")
 ########################################################################
 if __name__ == '__main__':
     app.run()
