@@ -37,7 +37,6 @@ def offre(dateIn,dateOut,nights):
     dateOUT=dateOut.split('-')
     duree=datetime(int(dateIN[0]),int(dateIN[1]),int(dateIN[2]))-datetime.now()
     if duree.days>=nbDays:
-        print (duree.days)
         if nbNMax>=nights and nights>=nbNMin:
             ansIN=datetime(int(dateIN[0]),int(dateIN[1]),int(dateIN[2]))
             dayIN=ansIN.strftime('%A').lower()
