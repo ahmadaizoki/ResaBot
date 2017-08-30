@@ -343,7 +343,7 @@ def received_postback(event):
 
 def foo():
     print (time.ctime())
-    threading.Timer(10,foo).start()
+    threading.Timer(60,foo).start()
 ########################################################################
 if __name__ == '__main__':
     app.run()
