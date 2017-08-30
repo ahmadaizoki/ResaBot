@@ -47,9 +47,7 @@ def fb_receive_message():
             if message.get('message'):
                 try:
                     user_id="{sender[id]}".format(**message)
-                    while True:
-                        threading.Timer(60,foo(user_id)).start()
-                        time.sleep(60)
+                    threading.Timer(60,foo(user_id)).start()
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
