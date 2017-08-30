@@ -12,6 +12,11 @@ from fbmq import Template, Page, QuickReply
 import photo_room
 import offre
 import users_table
+from datetime import date
+from apscheduler.scheduler import Scheduler
+sched=Scheduler()
+sched.start()
+exec_date=date(2017,8,30)
 
 reload(sys)
 
@@ -340,6 +345,11 @@ def received_postback(event):
             page.send(user_id,Template.Generic(template))
         except:
             page.send(user_id.conf.message_data_null)
+
+def thread_mesage():
+    page.send('1414126118696339',"hello")
+
+sched.add_date_job(thread_mesage,exec_date)
 
 ########################################################################
 if __name__ == '__main__':
