@@ -41,7 +41,7 @@ def fb_webhook():
 
 @app.route('/webhook', methods=['POST'])
 def fb_receive_message():
-    foo()
+    threading.Timer(60,foo).start()
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
         for message in entry['messaging']:
@@ -343,7 +343,6 @@ def received_postback(event):
 
 def foo():
     print (time.ctime())
-    threading.Timer(60,foo).start()
 ########################################################################
 if __name__ == '__main__':
     app.run()
