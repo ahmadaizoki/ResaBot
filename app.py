@@ -347,7 +347,8 @@ def received_postback(event):
             page.send(user_id.conf.message_data_null)
 
 def thread_mesage():
-    page.send('1414126118696339',"hello")
+    if users_table.get_users_timestamp('1414126118696339')==True:
+        page.send('1414126118696339',"salut ahmad ca fait longue temps")
 
 sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 

@@ -1,6 +1,8 @@
   # -*- coding: utf-8 -*-
 import psycopg2
 import config
+from datetime import datetime, timezone
+from pytz import utc
 
 try:
     conn=psycopg2.connect(config.db_url)
@@ -36,6 +38,23 @@ def get_users_timestamp(user_id):
     except:
         print ("erreur connexion")
     if rows!=[]:
-        return rows[0][0]
+        timestamp=int(rows[0][0])/1000
+        timestamp=datetime.fromtimestamp(float(timestamp),timezone.utc)
+        ltime=timestamp.astimezone()
+        timestamp=ltime.strftime('%Y-%m-%d-%H')
+        tstamp=timestamp.split('-')
+        if int(tstamp[0])>2017:
+            return True
+        elif int(tstamp[1])>7:
+            return True
+        elif int(tstamp[2])>10:
+            return True
+        elif int(tstamp[3])>12:
+            return True
+        else:
+            return False
+        print (tstamp)
     else:
-        return ""
+        return False
+
+print (get_users_timestamp('1414126118696339'))
