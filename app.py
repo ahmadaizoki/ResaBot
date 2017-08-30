@@ -11,6 +11,8 @@ import fbweb
 from fbmq import Template, Page, QuickReply
 import photo_room
 import offre
+import time
+import threading
 
 reload(sys)
 
@@ -39,6 +41,7 @@ def fb_webhook():
 
 @app.route('/webhook', methods=['POST'])
 def fb_receive_message():
+    foo()
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
         for message in entry['messaging']:
@@ -337,6 +340,10 @@ def received_postback(event):
             page.send(user_id,Template.Generic(template))
         except:
             page.send(user_id.conf.message_data_null)
+
+def foo():
+    print (time.ctime())
+    threading.Timer(10,foo).start()
 ########################################################################
 if __name__ == '__main__':
     app.run()
