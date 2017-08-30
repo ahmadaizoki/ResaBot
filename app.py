@@ -13,8 +13,8 @@ import photo_room
 import offre
 import users_table
 from datetime import date
-from apscheduler.scheduler import Scheduler
-sched=Scheduler()
+from apscheduler.schedulers.background import BackgroundScheduler
+sched=BackgroundScheduler()
 sched.start()
 exec_date=date(2017,8,30)
 
