@@ -47,7 +47,6 @@ def fb_receive_message():
             if message.get('message'):
                 try:
                     user_id="{sender[id]}".format(**message)
-                    threading.Timer(60,foo(user_id)).start()
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
                     user_profile=page.get_user_profile(user_id)
@@ -341,8 +340,6 @@ def received_postback(event):
         except:
             page.send(user_id.conf.message_data_null)
 
-def foo(user_id):
-    page.send(user_id,"coucou")
 ########################################################################
 if __name__ == '__main__':
     app.run()
