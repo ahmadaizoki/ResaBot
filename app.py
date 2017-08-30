@@ -147,8 +147,12 @@ def fb_receive_message():
                                 res_offre_of=res_offre[0]
                                 res_offre_nom=res_offre[1]
                                 if res_offre_of!="":
-                                    message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom
-                                    page.send(user_id,message_offre)
+                                    message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
+                                    quick_replies=[
+                                    QuickReply(title="Oui",payload="PICK_OFFR"),
+                                    QuickReply(title="Non",payload="PICK_OFFR")
+                                    ]
+                                    page.send(user_id,message_offre,quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                             except:
                                 print ("erreur offre")
                         except:
