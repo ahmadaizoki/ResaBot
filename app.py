@@ -349,7 +349,7 @@ def received_postback(event):
 def thread_mesage():
     page.send('1414126118696339',"hello")
 
-sched.add_job(thread_mesage,'interval',minutes=1)
+sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 
 ########################################################################
 if __name__ == '__main__':
