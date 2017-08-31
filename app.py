@@ -33,6 +33,7 @@ USER_SEQ={}
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
+thread_mesage()
 
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
@@ -367,5 +368,4 @@ def thread_mesage():
 
 ########################################################################
 if __name__ == '__main__':
-    thread_mesage()
     app.run()
