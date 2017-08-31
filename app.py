@@ -132,7 +132,7 @@ def fb_receive_message():
                             if adults==0:
                                 try:
                                     quick_replies=[
-                                    QuickReply(title="1",payload="PICK_P1),
+                                    QuickReply(title="1",payload="PICK_P1"),
                                     QuickReply(title="2",payload="PICK_P2"),
                                     QuickReply(title="3",payload="PICK_P3"),
                                     QuickReply(title="4",payload="PICK_P4"),
