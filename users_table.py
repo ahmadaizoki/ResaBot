@@ -38,7 +38,6 @@ def get_users_timestamp(user_id):
     tm_mon=time_loc.tm_mon
     tm_mday=time_loc.tm_mday
     tm_min=time_loc.tm_min
-    print (time_loc)
     try:
         cur.execute("""SELECT timestamp FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
         rows=cur.fetchall()
@@ -50,7 +49,6 @@ def get_users_timestamp(user_id):
         ltime=timestamp.astimezone()
         timestamp=ltime.strftime('%Y-%m-%d-%H-%M')
         tstamp=timestamp.split('-')
-        print (tstamp)
         if tm_year>int(tstamp[0]):
             if tm_mon-int(tstamp[1])>3 or int(tstamp[1])-tm_mon>3:
                 return True

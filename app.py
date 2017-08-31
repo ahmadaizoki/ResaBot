@@ -354,12 +354,15 @@ def thread_mesage():
     QuickReply(title="Offres",payload="PICK_OFFRES"),
     QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
     ]
-    for i in range (0,ln):
+    i=0
+    while i<ln:
+        print (users_table.get_users_timestamp(users_id[i]))
         if users_table.get_users_timestamp(users_id[i])==True:
             user_profile=page.get_user_profile(users_id[i])
             user=user_profile["first_name"]
             print (user)
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+        i++
 sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 
 ########################################################################
