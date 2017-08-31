@@ -362,7 +362,7 @@ def thread_mesage():
             user=user_profile["first_name"]
             print (user)
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-        i++
+        i=i+1
 sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 
 ########################################################################
