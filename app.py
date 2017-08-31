@@ -363,7 +363,8 @@ def thread_mesage():
             print (user)
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
         i=i+1
-sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
+thread_mesage()
+#sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 
 ########################################################################
 if __name__ == '__main__':
