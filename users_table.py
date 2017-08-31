@@ -48,6 +48,8 @@ def get_users_timestamp(user_id):
         timestamp=datetime.fromtimestamp(float(timestamp),timezone.utc)
         ltime=timestamp.astimezone()
         timestamp=ltime.strftime('%Y-%m-%d-%H-%M')
+        print (timestamp)
+        print (time_loc)
         tstamp=timestamp.split('-')
         if tm_year>int(tstamp[0]):
             if tm_mon-int(tstamp[1])>3 or int(tstamp[1])-tm_mon>3:
