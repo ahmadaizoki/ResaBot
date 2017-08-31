@@ -129,7 +129,7 @@ def fb_receive_message():
                             date=res[2]
                             nights=res[3]
                             adults=res[4]
-                            if adults==0:
+                            if adults=="":
                                 try:
                                     quick_replies=[
                                     QuickReply(title="1",payload="PICK_P1"),
