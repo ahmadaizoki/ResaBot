@@ -345,7 +345,7 @@ def received_postback(event):
             page.send(user_id.conf.message_data_null)
 
 def sch (mint):
-    sched.add_job(users_table.thread_mesage,'interval',minutes=mint)
+    sched.add_job(users_table.thread_mesage(),'interval',minutes=mint)
 
 minutes=conf.minutes
 sch(minutes)
