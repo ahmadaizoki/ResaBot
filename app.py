@@ -131,7 +131,7 @@ def fb_receive_message():
                             adults=res[4]
                             if adults=="":
                                 resolvedQuery=res[5]
-                                if resolvedQuery!="Plus de personnes"
+                                if resolvedQuery!="Plus de personnes":
                                     try:
                                         quick_replies=[
                                         QuickReply(title="1",payload="PICK_P1"),
@@ -147,7 +147,7 @@ def fb_receive_message():
                                     client.send_text(user_id,speech)
                             elif nights=="":
                                 resolvedQuery=res[5]
-                                if resolvedQuery!="Plus de nuits"
+                                if resolvedQuery!="Plus de nuits":
                                     try:
                                         quick_replies=[
                                         QuickReply(title="1",payload="PICK_N1"),
