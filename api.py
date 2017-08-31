@@ -47,6 +47,7 @@ def api_message(text,user_id):
         date=res['result']['parameters']['date']
         nights=res['result']['parameters']['nbnight']
         adults=res['result']['parameters']['nbpax']
+        resolvedQuery=res['result']['resolvedQuery']
         date=date.lower()
         if date!="":
             mot=analyse_phrase.analyse(date)
@@ -112,7 +113,7 @@ def api_message(text,user_id):
             api_message(message_text,user_id)
             print ("ahmad")
         print ([speech]+[intention]+[date]+[nights]+[adults])
-        return ([speech]+[intention]+[date]+[nights]+[adults])
+        return ([speech]+[intention]+[date]+[nights]+[adults]+[resolvedQuery])
     elif intention=="nouvelle_date" or intention=="nombre_nuits" or intention=="nombre_personnes" or intention=="Moins_cher" :
         try:
             date=res['result']['contexts'][0]['parameters']['date']

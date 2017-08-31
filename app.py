@@ -130,28 +130,36 @@ def fb_receive_message():
                             nights=res[3]
                             adults=res[4]
                             if adults=="":
-                                try:
-                                    quick_replies=[
-                                    QuickReply(title="1",payload="PICK_P1"),
-                                    QuickReply(title="2",payload="PICK_P2"),
-                                    QuickReply(title="3",payload="PICK_P3"),
-                                    QuickReply(title="4",payload="PICK_P4"),
-                                    QuickReply(title="Plus de personnes",payload="PICK_P5")
-                                    ]
-                                    page.send(user_id,"Choisi le nombre de personnes:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-                                except:
+                                resolvedQuery=res[5]
+                                if resolvedQuery!="Plus de personnes"
+                                    try:
+                                        quick_replies=[
+                                        QuickReply(title="1",payload="PICK_P1"),
+                                        QuickReply(title="2",payload="PICK_P2"),
+                                        QuickReply(title="3",payload="PICK_P3"),
+                                        QuickReply(title="4",payload="PICK_P4"),
+                                        QuickReply(title="Plus de personnes",payload="PICK_P5")
+                                        ]
+                                        page.send(user_id,"Choisi le nombre de personnes:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                    except:
+                                        client.send_text(user_id,speech)
+                                else:
                                     client.send_text(user_id,speech)
                             elif nights=="":
-                                try:
-                                    quick_replies=[
-                                    QuickReply(title="1",payload="PICK_N1"),
-                                    QuickReply(title="2",payload="PICK_N2"),
-                                    QuickReply(title="3",payload="PICK_N3"),
-                                    QuickReply(title="4",payload="PICK_N4"),
-                                    QuickReply(title="Plus de nuits",payload="PICK_N5")
-                                    ]
-                                    page.send(user_id,"Choisi le nombre de nuits:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-                                except:
+                                resolvedQuery=res[5]
+                                if resolvedQuery!="Plus de nuits"
+                                    try:
+                                        quick_replies=[
+                                        QuickReply(title="1",payload="PICK_N1"),
+                                        QuickReply(title="2",payload="PICK_N2"),
+                                        QuickReply(title="3",payload="PICK_N3"),
+                                        QuickReply(title="4",payload="PICK_N4"),
+                                        QuickReply(title="Plus de nuits",payload="PICK_N5")
+                                        ]
+                                        page.send(user_id,"Choisi le nombre de nuits:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                    except:
+                                        client.send_text(user_id,speech)
+                                else:
                                     client.send_text(user_id,speech)
                             else:
                                 try:
