@@ -124,7 +124,62 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                         except:
                             client.send_text(user_id,conf.message_pas_offres)
-                    elif intention=="h_dispo" or intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits" or intention=="Changement_avis":
+                    elif intention=="h_dispo":
+                        try:
+                            date=res[2]
+                            nights=res[3]
+                            adults=res[4]
+                            if adults==0:
+                                try:
+                                    quick_replies=[
+                                    QuickReply(title="1",payload="PICK_P1),
+                                    QuickReply(title="2",payload="PICK_P2"),
+                                    QuickReply(title="3",payload="PICK_P3"),
+                                    QuickReply(title="4",payload="PICK_P4"),
+                                    QuickReply(title="Plus de personnes",payload="PICK_P5")
+                                    ]
+                                    page.send(user_id,"Choisi le nombre de personnes:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                except:
+                                    client.send_text(user_id,speech)
+                            else:
+                                try:
+                                    h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
+                                    q_from=h_dispo[0]
+                                    q_to=h_dispo[1]
+                                    q_nights=h_dispo[2]
+                                    q_adults=h_dispo[3]
+                                    q_price=h_dispo[4]
+                                    q_currency=h_dispo[5]
+                                    q_BookLink=h_dispo[6]
+                                    q_room=h_dispo[7]
+                                    photo=photo_room.photo(q_room)
+                                    template=[Template.GenericElement("Une "+q_room,
+                                    item_url=photo,
+                                    image_url=photo,
+                                    subtitle="Pour "+str(q_nights)+" nuits et "+str(q_adults)+" personne(s)"+"\n"+"Du "+q_from+" au "+q_to+" à partir de "+str(q_price)+" "+q_currency,
+                                    buttons=[
+                                    Template.ButtonWeb("Réserver",q_BookLink),
+                                    Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(date)+","+str(nights)+","+str(adults))
+                                    ])]
+                                    page.send(user_id,Template.Generic(template))
+                                    try:
+                                        res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
+                                        res_offre_of=res_offre[0]
+                                        res_offre_nom=res_offre[1]
+                                        if res_offre_of!="":
+                                            message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
+                                            quick_replies=[
+                                            QuickReply(title="Oui",payload="PICK_OFFR"),
+                                            QuickReply(title="Non",payload="PICK_OFFR")
+                                            ]
+                                            page.send(user_id,message_offre,quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                    except:
+                                        print ("erreur offre")
+                                except:
+                                    client.send_text(user_id,speech)
+                        except:
+                            client.send_text(user_id,speech)
+                    elif intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits" or intention=="Changement_avis":
                         try:
                             date=res[2]
                             nights=res[3]
@@ -343,12 +398,6 @@ def received_postback(event):
             page.send(user_id,Template.Generic(template))
         except:
             page.send(user_id.conf.message_data_null)
-
-def sch (mint):
-    sched.add_job(users_table.thread_mesage(),'interval',minutes=mint)
-
-minutes=conf.minutes
-sch(minutes)
 
 ########################################################################
 if __name__ == '__main__':

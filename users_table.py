@@ -4,8 +4,6 @@ import config
 from datetime import datetime, timezone
 from pytz import utc
 import time
-from fbmq import Template, Page, QuickReply
-page = Page(config.fb_access_token)
 
 try:
     conn=psycopg2.connect(config.db_url)
@@ -76,24 +74,3 @@ def get_users_id():
     for i in range (0,ln):
          r=r+[rows[i][0]]
     return r
-
-def thread_mesage():
-    users_id=get_users_id()
-    print (users_id)
-    ln=len(users_id)
-    quick_replies=[
-    QuickReply(title="Photos",payload="PICK_PHOTOS"),
-    QuickReply(title="Offres",payload="PICK_OFFRES"),
-    QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
-    ]
-    i=0
-    while i<ln:
-        print (get_users_timestamp(users_id[i]))
-        if get_users_timestamp(users_id[i])==True:
-            user_profile=page.get_user_profile(users_id[i])
-            user=user_profile["first_name"]
-            print (user)
-            page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-        i=i+1
-
-get_users_id()
