@@ -16,7 +16,6 @@ from datetime import date
 from apscheduler.schedulers.background import BackgroundScheduler
 sched=BackgroundScheduler()
 sched.start()
-exec_date=date(2017,8,30)
 
 reload(sys)
 
@@ -348,6 +347,7 @@ def received_postback(event):
 
 def thread_mesage():
     users_id=users_table.get_users_id()
+    print (users_id)
     ln=len(users_id)
     quick_replies=[
     QuickReply(title="Photos",payload="PICK_PHOTOS"),
@@ -360,7 +360,7 @@ def thread_mesage():
             user_profile=page.get_user_profile(users_id[i])
             user=user_profile["first_name"]
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-
+            next()
 sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 
 ########################################################################
