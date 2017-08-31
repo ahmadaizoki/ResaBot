@@ -3,6 +3,7 @@ import psycopg2
 import config
 from datetime import datetime, timezone
 from pytz import utc
+import time
 
 try:
     conn=psycopg2.connect(config.db_url)
@@ -32,6 +33,8 @@ def users(user_id,timestamp):
             print ("erreur connexion")
 
 def get_users_timestamp(user_id):
+    time_loc=time.localtime()
+    print (time_loc)
     try:
         cur.execute("""SELECT timestamp FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
         rows=cur.fetchall()
@@ -57,6 +60,8 @@ def get_users_timestamp(user_id):
     else:
         return False
 
+get_users_timestamp('1414126118696339')
+
 def get_users_id():
     try:
         cur.execute("""SELECT userid FROM users""")
@@ -64,7 +69,10 @@ def get_users_id():
     except:
         print ("erreur connexion")
     ln=len(rows)
+    print (ln)
     r=[]
     for i in range (0,ln):
          r=r+[rows[i][0]]
     return r
+
+get_users_id()
