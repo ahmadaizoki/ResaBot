@@ -49,7 +49,7 @@ def get_users_timestamp(user_id):
             return True
         elif int(tstamp[2])>10:
             return True
-        elif int(tstamp[3])>12:
+        elif int(tstamp[3])>7:
             return True
         else:
             return False
