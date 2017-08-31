@@ -356,7 +356,7 @@ def thread_mesage():
     ]
     for i in range (0,ln):
         print (i)
-        if users_table.get_users_timestamp(users_id[0])==True:
+        if users_table.get_users_timestamp(users_id[i])==True:
             user_profile=page.get_user_profile(users_id[i])
             user=user_profile["first_name"]
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
