@@ -344,26 +344,8 @@ def received_postback(event):
         except:
             page.send(user_id.conf.message_data_null)
 
-def thread_mesage():
-    users_id=users_table.get_users_id()
-    print (users_id)
-    ln=len(users_id)
-    quick_replies=[
-    QuickReply(title="Photos",payload="PICK_PHOTOS"),
-    QuickReply(title="Offres",payload="PICK_OFFRES"),
-    QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
-    ]
-    i=0
-    while i<ln:
-        print (users_table.get_users_timestamp(users_id[i]))
-        if users_table.get_users_timestamp(users_id[i])==True:
-            user_profile=page.get_user_profile(users_id[i])
-            user=user_profile["first_name"]
-            print (user)
-            page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
-        i=i+1
 def sch (mint):
-    sched.add_job(thread_mesage,'interval',minutes=mint)
+    sched.add_job(users_table.thread_mesage,'interval',minutes=mint)
 
 minutes=conf.minutes
 sch(minutes)
