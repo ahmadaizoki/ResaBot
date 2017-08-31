@@ -347,8 +347,18 @@ def received_postback(event):
             page.send(user_id.conf.message_data_null)
 
 def thread_mesage():
-    if users_table.get_users_timestamp('1414126118696339')==True:
-        page.send('1414126118696339',"salut ahmad ca fait longue temps")
+    users_id=users_table.get_users_id()
+    ln=len(users_id)
+    quick_replies=[
+    QuickReply(title="Photos",payload="PICK_PHOTOS"),
+    QuickReply(title="Offres",payload="PICK_OFFRES"),
+    QuickReply(title="Réserver une chambre",payload="PICK_RESERVATION")
+    ]
+    for i in range (0,ln):
+        if users_table.get_users_timestamp(users_id[0])==True:
+            user_profile=page.get_user_profile(users_id[i])
+            user=user_profile["first_name"]
+            page.send(users_id[0],"Salut "+user+"!"+"\n"+"Tu m'as pas parlé depuis lognue temps, voilà la petite liste de ce que je peux faire pour toi :p",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
 
 sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
 

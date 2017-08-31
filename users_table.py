@@ -57,4 +57,14 @@ def get_users_timestamp(user_id):
     else:
         return False
 
-print (get_users_timestamp('1414126118696339'))
+def get_users_id():
+    try:
+        cur.execute("""SELECT userid FROM users""")
+        rows=cur.fetchall()
+    except:
+        print ("erreur connexion")
+    ln=len(rows)
+    r=[]
+    for i in range (0,ln):
+         r=r+[rows[i][0]]
+    return r
