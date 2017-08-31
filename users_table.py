@@ -78,7 +78,7 @@ def get_users_id():
     return r
 
 def thread_mesage():
-    users_id=users_table.get_users_id()
+    users_id=get_users_id()
     print (users_id)
     ln=len(users_id)
     quick_replies=[
@@ -88,8 +88,8 @@ def thread_mesage():
     ]
     i=0
     while i<ln:
-        print (users_table.get_users_timestamp(users_id[i]))
-        if users_table.get_users_timestamp(users_id[i])==True:
+        print (get_users_timestamp(users_id[i]))
+        if get_users_timestamp(users_id[i])==True:
             user_profile=page.get_user_profile(users_id[i])
             user=user_profile["first_name"]
             print (user)
