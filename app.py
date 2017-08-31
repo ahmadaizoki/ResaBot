@@ -33,8 +33,6 @@ USER_SEQ={}
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
-thread_mesage()
-
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
     verification_code = conf.fb_verifing_token
@@ -364,7 +362,11 @@ def thread_mesage():
             print (user)
             page.send('1414126118696339',"Salut "+user+"!",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
         i=i+1
-#sched.add_job(thread_mesage,'interval',minutes=conf.minutes)
+def sch (mint):
+    sched.add_job(thread_mesage,'interval',minutes=mint)
+
+minutes=conf.minutes
+sch(minutes)
 
 ########################################################################
 if __name__ == '__main__':
