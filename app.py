@@ -141,6 +141,18 @@ def fb_receive_message():
                                     page.send(user_id,"Choisi le nombre de personnes:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                                 except:
                                     client.send_text(user_id,speech)
+                            elif nights=="":
+                                try:
+                                    quick_replies=[
+                                    QuickReply(title="1",payload="PICK_N1"),
+                                    QuickReply(title="2",payload="PICK_N2"),
+                                    QuickReply(title="3",payload="PICK_N3"),
+                                    QuickReply(title="4",payload="PICK_N4"),
+                                    QuickReply(title="Plus de nuits",payload="PICK_N5")
+                                    ]
+                                    page.send(user_id,"Choisi le nombre de nuits:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                except:
+                                    client.send_text(user_id,speech)
                             else:
                                 try:
                                     h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
