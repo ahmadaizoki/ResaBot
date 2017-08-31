@@ -34,6 +34,10 @@ def users(user_id,timestamp):
 
 def get_users_timestamp(user_id):
     time_loc=time.localtime()
+    tm_year=time_loc.tm_year
+    tm_mon=time_loc.tm_mon
+    tm_mday=time_loc.tm_mday
+    tm_min=time_loc.tm_min
     print (time_loc)
     try:
         cur.execute("""SELECT timestamp FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
@@ -44,23 +48,22 @@ def get_users_timestamp(user_id):
         timestamp=int(rows[0][0])/1000
         timestamp=datetime.fromtimestamp(float(timestamp),timezone.utc)
         ltime=timestamp.astimezone()
-        timestamp=ltime.strftime('%Y-%m-%d-%H')
+        timestamp=ltime.strftime('%Y-%m-%d-%H-%M')
         tstamp=timestamp.split('-')
-        if int(tstamp[0])>2017:
+        print (tstamp)
+        if tm_year>int(tstamp[0]):
+            if tm_mon-int(tstamp[1])>3 or int(tstamp[1])-tm_mon>3:
+                return True
+        elif tm_mon-int(tstamp[1])>3:
             return True
-        elif int(tstamp[1])>7:
-            return True
-        elif int(tstamp[2])>10:
-            return True
-        elif int(tstamp[3])>7:
+        elif tm_min-int(tstamp[4])>2:
             return True
         else:
             return False
-        print (tstamp)
     else:
         return False
 
-get_users_timestamp('1414126118696339')
+print (get_users_timestamp('1414126118696339'))
 
 def get_users_id():
     try:
