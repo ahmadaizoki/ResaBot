@@ -74,3 +74,13 @@ def get_users_id():
     for i in range (0,ln):
          r=r+[rows[i][0]]
     return r
+
+def last_message(user_id):
+    try:
+        cur.execute("""SELECT message FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
+        rows=cur.fetchall()
+    except:
+        print ("erreur connexion")
+    print (rows[0][0])
+
+last_message("1414126118696339")
