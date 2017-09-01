@@ -50,7 +50,7 @@ def fb_receive_message():
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
                     timestamp="{timestamp}".format(**message)
-                    users_table.users(user_id,timestamp)
+                    users_table.users(user_id,timestamp,text)
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
                     user_last_name=user_profile["last_name"]

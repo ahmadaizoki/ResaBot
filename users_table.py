@@ -12,7 +12,7 @@ except:
 rows=[]
 cur=conn.cursor()
 
-def users(user_id,timestamp):
+def users(user_id,timestamp,message):
     try:
         cur.execute("""SELECT * FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
         rows=cur.fetchall()
@@ -21,13 +21,13 @@ def users(user_id,timestamp):
     if rows!=[]:
         if rows[0][1]==user_id and rows[0][2]!=timestamp:
             try:
-                cur.execute("""UPDATE users SET timestamp=%(timestamp)s WHERE userid=%(user_id)s""",{"timestamp":timestamp,"user_id":user_id})
+                cur.execute("""UPDATE users SET timestamp=%(timestamp)s AND message=%(message)s WHERE userid=%(user_id)s""",{"timestamp":timestamp,"user_id":user_id,"message":message})
                 conn.commit()
             except:
                 print ("erreur connexion")
     else:
         try:
-            cur.execute("""INSERT INTO users (userid,timestamp) VALUES (%(user_id)s,%(timestamp)s)""",{"user_id":user_id,"timestamp":timestamp})
+            cur.execute("""INSERT INTO users (userid,timestamp,message) VALUES (%(user_id)s,%(timestamp)s,%(message)s)""",{"user_id":user_id,"timestamp":timestamp,"message":message})
             conn.commit()
         except:
             print ("erreur connexion")
