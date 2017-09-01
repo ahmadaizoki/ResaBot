@@ -21,7 +21,7 @@ def users(user_id,timestamp,message):
     if rows!=[]:
         if rows[0][1]==user_id and rows[0][2]!=timestamp:
             try:
-                cur.execute("""UPDATE users SET timestamp=%(timestamp)s AND message=%(message)s WHERE userid=%(user_id)s""",{"timestamp":timestamp,"user_id":user_id,"message":message})
+                cur.execute("""UPDATE users SET timestamp=%(timestamp)s,message=%(message)s WHERE userid=%(user_id)s""",{"timestamp":timestamp,"user_id":user_id,"message":message})
                 conn.commit()
             except:
                 print ("erreur connexion")
