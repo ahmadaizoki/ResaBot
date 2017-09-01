@@ -50,10 +50,8 @@ def fb_receive_message():
                     recipient="{recipient[id]}".format(**message)
                     timestamp="{timestamp}".format(**message)
                     last_message=users_table.last_message(user_id)
-                    print (str(last_message))
-                    print (str(text))
                     if str(last_message)==str(text):
-                        return 0
+                        return "ok"
                     users_table.users(user_id,timestamp,text)
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
