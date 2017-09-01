@@ -81,4 +81,7 @@ def last_message(user_id):
         rows=cur.fetchall()
     except:
         print ("erreur connexion")
-    return (rows[0][0])
+    if rows!=[]:
+        return (rows[0][0])
+    else:
+        return ""
