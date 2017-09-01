@@ -13,9 +13,6 @@ import photo_room
 import offre
 import users_table
 from datetime import date
-from apscheduler.schedulers.background import BackgroundScheduler
-sched=BackgroundScheduler()
-sched.start()
 
 reload(sys)
 
@@ -29,9 +26,6 @@ app = Flask(__name__)
 USER_SEQ={}
 #########################################################################
 #facebook bot
-
-from pymessager.message import Messager
-client=Messager(conf.fb_access_token)
 
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
@@ -90,7 +84,7 @@ def fb_receive_message():
                                     subtitle=alt[i])]
                             page.send(user_id,Template.Generic(template))
                         except:
-                            client.send_text(user_id,conf.message_pas_photos)
+                            page.send(user_id,conf.message_pas_photos)
                     elif intention=="offres":
                         try:
                             offres=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)
@@ -123,7 +117,7 @@ def fb_receive_message():
                                     ])]
                             page.send(user_id,Template.Generic(template))
                         except:
-                            client.send_text(user_id,conf.message_pas_offres)
+                            page.send(user_id,conf.message_pas_offres)
                     elif intention=="h_dispo":
                         try:
                             date=res[2]
@@ -141,9 +135,9 @@ def fb_receive_message():
                                         ]
                                         page.send(user_id,"Choisi le nombre de personnes:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                                     except:
-                                        client.send_text(user_id,speech)
+                                        page.send(user_id,speech)
                                 else:
-                                    client.send_text(user_id,speech)
+                                    page.send(user_id,speech)
                             elif nights=="":
                                 resolvedQuery=res[5]
                                 if resolvedQuery!="Plus de nuits":
@@ -157,9 +151,9 @@ def fb_receive_message():
                                         ]
                                         page.send(user_id,"Choisi le nombre de nuits:",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                                     except:
-                                        client.send_text(user_id,speech)
+                                        page.send(user_id,speech)
                                 else:
-                                    client.send_text(user_id,speech)
+                                    page.send(user_id,speech)
                             else:
                                 try:
                                     h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
@@ -195,9 +189,9 @@ def fb_receive_message():
                                     except:
                                         print ("erreur offre")
                                 except:
-                                    client.send_text(user_id,speech)
+                                    page.send(user_id,speech)
                         except:
-                            client.send_text(user_id,speech)
+                            page.send(user_id,speech)
                     elif intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits" or intention=="Changement_avis":
                         try:
                             date=res[2]
@@ -236,7 +230,7 @@ def fb_receive_message():
                             except:
                                 print ("erreur offre")
                         except:
-                            client.send_text(user_id,speech)
+                            page.send(user_id,speech)
                     elif intention=="Moins_cher":
                         try:
                             date=res[2]
@@ -261,15 +255,16 @@ def fb_receive_message():
                             ])]
                             page.send(user_id,Template.Generic(template))
                         except:
-                            client.send_text(user_id,speech)
+                            page.send(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
-                        client.send_image(user_id,speech)
+                        page.send(user_id,speech)
                     elif intention=="r_i":
                         chaine=res[2]
                         if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or chaine==user_l:
-                            client.send_text(user_id,"C'est toi! :) Tu crois que j'ai pas les pouvoirs de te connaitre")
+                            page.send(user_id,"C'est toi! :) Tu crois que j'ai pas les pouvoirs de te connaitre")
                         else:
-                            client.send_image(user_id,speech)
+                            #client.send_image(user_id,speech)
+                            page.send(user_id,speech)
                     elif intention=="smalltalk.greetings.hello":
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
@@ -285,9 +280,9 @@ def fb_receive_message():
                         ]
                         page.send(user_id,"Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     else:
-                        client.send_text(user_id,speech)
+                        page.send(user_id,speech)
                 except:
-                    client.send_text(user_id,conf.message_data_null)
+                    page.send(user_id,conf.message_data_null)
             elif message.get('postback'):
                 received_postback(message)
 
