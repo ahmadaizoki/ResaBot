@@ -280,9 +280,6 @@ def fb_receive_message():
                         else:
                             client.send_image(user_id,speech)
                     elif intention=="smalltalk.greetings.hello":
-                        last_message=users_table.last_message(user_id)
-                        if str(last_message)==str(text):
-                            return "ok"
                         users_table.users(user_id,timestamp,text)
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
