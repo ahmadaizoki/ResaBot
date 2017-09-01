@@ -82,5 +82,3 @@ def last_message(user_id):
     except:
         print ("erreur connexion")
     print (rows[0][0])
-
-last_message("1414126118696339")
