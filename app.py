@@ -41,16 +41,15 @@ def fb_webhook():
 @app.route('/webhook', methods=['POST'])
 def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
-    print (message_entries)
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
-                print (message)
                 try:
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
                     recipient="{recipient[id]}".format(**message)
                     timestamp="{timestamp}".format(**message)
+                    users_table.users(user_id,timestamp)
                     user_profile=page.get_user_profile(user_id)
                     user_first_name=user_profile["first_name"]
                     user_last_name=user_profile["last_name"]
@@ -63,7 +62,6 @@ def fb_receive_message():
                     speech=res[0]
                     intention=res[1]
                     if intention=="gallery":
-                        users_table.users(user_id,timestamp,text)
                         try:
                             gallery=fbweb.get_gallery(conf.HID,"it_IT",conf.H_Access_Token)
                             url=gallery[0]
@@ -91,7 +89,6 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,conf.message_pas_photos)
                     elif intention=="offres":
-                        users_table.users(user_id,timestamp,text)
                         try:
                             offres=fbweb.get_offers("json",conf.HID,"totalPrice","en_GB","EUR",conf.H_Access_Token)
                             url=offres[0]
@@ -199,7 +196,7 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="nouvelle_date" or intention=="nombre_personnes" or intention=="nombre_nuits" or intention=="Changement_avis":
-                        users_table.users(user_id,timestamp,text)
+
                         try:
                             date=res[2]
                             nights=res[3]
@@ -239,7 +236,7 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="Moins_cher":
-                        users_table.users(user_id,timestamp,text)
+
                         try:
                             date=res[2]
                             nights=res[3]
@@ -265,17 +262,17 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
-                        users_table.users(user_id,timestamp,text)
+
                         client.send_image(user_id,speech)
                     elif intention=="r_i":
-                        users_table.users(user_id,timestamp,text)
+
                         chaine=res[2]
                         if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or chaine==user_l:
                             client.send_text(user_id,"C'est toi! :) Tu crois que j'ai pas les pouvoirs de te connaitre")
                         else:
                             client.send_image(user_id,speech)
                     elif intention=="smalltalk.greetings.hello":
-                        users_table.users(user_id,timestamp,text)
+
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
                         QuickReply(title="Offres",payload="PICK_OFFRES"),
@@ -283,7 +280,7 @@ def fb_receive_message():
                         ]
                         page.send(user_id,"Bonjour "+user_first_name+"! Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     elif intention=="s_f":
-                        users_table.users(user_id,timestamp,text)
+
                         quick_replies=[
                         QuickReply(title="Photos",payload="PICK_PHOTOS"),
                         QuickReply(title="Offres",payload="PICK_OFFRES"),
@@ -291,7 +288,7 @@ def fb_receive_message():
                         ]
                         page.send(user_id,"Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     else:
-                        users_table.users(user_id,timestamp,text)
+
                         client.send_text(user_id,speech)
                 except:
                     client.send_text(user_id,conf.message_data_null)
