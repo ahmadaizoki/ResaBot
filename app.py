@@ -264,15 +264,9 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="insultes_action" or intention=="danser" or intention=="r_n" or intention=="r_p":
-                        last_message=users_table.last_message(user_id)
-                        if str(last_message)==str(text):
-                            return "ok"
                         users_table.users(user_id,timestamp,text)
                         client.send_image(user_id,speech)
                     elif intention=="r_i":
-                        last_message=users_table.last_message(user_id)
-                        if str(last_message)==str(text):
-                            return "ok"
                         users_table.users(user_id,timestamp,text)
                         chaine=res[2]
                         if chaine==user_first_name or chaine==user_last_name or chaine==user or chaine==user_first_name_l or chaine==user_last_name_l or chaine==user_l:
@@ -296,9 +290,6 @@ def fb_receive_message():
                         ]
                         page.send(user_id,"Voilà une petite liste de ce que je peux faire pour toi :)",quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                     else:
-                        last_message=users_table.last_message(user_id)
-                        if str(last_message)==str(text):
-                            return "ok"
                         users_table.users(user_id,timestamp,text)
                         client.send_text(user_id,speech)
                 except:
