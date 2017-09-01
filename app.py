@@ -44,6 +44,7 @@ def fb_receive_message():
     for entry in message_entries:
         for message in entry['messaging']:
             if message.get('message'):
+                print (message)
                 try:
                     user_id="{sender[id]}".format(**message)
                     text="{message[text]}".format(**message)
