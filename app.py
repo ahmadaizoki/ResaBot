@@ -205,13 +205,14 @@ def fb_receive_message():
                                                     Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(q_from)+","+str(q_nights)+","+str(q_adults))
                                                     ])]
                                                     page.send(user_id,Template.Generic(template_of))
-                                        if res_offre_of!="":
-                                            message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
-                                            quick_replies=[
-                                            QuickReply(title="Oui",payload="PICK_OFFR"),
-                                            QuickReply(title="Non",payload="PICK_OFFR")
-                                            ]
-                                            page.send(user_id,message_offre,quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
+                                        else:
+                                            if res_offre_of!="":
+                                                message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
+                                                quick_replies=[
+                                                QuickReply(title="Oui",payload="PICK_OFFR"),
+                                                QuickReply(title="Non",payload="PICK_OFFR")
+                                                ]
+                                                page.send(user_id,message_offre,quick_replies=quick_replies,metadata="DEVELOPER_DEFINED_METADATA")
                                     except:
                                         print ("erreur offre")
                                 except:
