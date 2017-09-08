@@ -87,4 +87,4 @@ def offre_we(dateIn,dateOut,nights,adults):
         return ""
 
 
-print (offre_we ("2017-12-12","2017-12-15","3","2"))
+#print (offre_we ("2017-12-12","2017-12-15","3","2"))
