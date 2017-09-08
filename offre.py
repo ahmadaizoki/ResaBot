@@ -74,9 +74,9 @@ def offre(dateIn,dateOut,nights):
                 dayOUT="dimanche"
             else:
                 return (["",nom_offre])
-            if dayIN==dayIn and dayOUT==dayOut:
-                return (["p1",nom_offre])
-            elif dayOUT=="vendredi":
+            #if dayIN==dayIn and dayOUT==dayOut:
+            #    return (["p1",nom_offre])
+            if dayOUT=="vendredi":
                 return (["p2",nom_offre])
             elif dayIN==dayIn:
                 return (["p3",nom_offre])
