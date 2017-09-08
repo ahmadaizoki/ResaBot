@@ -13,6 +13,7 @@ import photo_room
 import offre
 import users_table
 from datetime import date
+import offre_weekend
 
 reload(sys)
 
@@ -182,6 +183,28 @@ def fb_receive_message():
                                         res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
                                         res_offre_of=res_offre[0]
                                         res_offre_nom=res_offre[1]
+                                        if res_offre_of=="p2":
+                                            offre_week=offre_weekend.offre_we(q_from,q_to,q_nights,q_adults)
+                                            if offre_week!="":
+                                                if len(offre_week)==8:
+                                                    q_from_of=offre_week[0]
+                                                    q_to_of=offre_week[1]
+                                                    q_nights_of=offre_week[2]
+                                                    q_adults_of=offre_week[3]
+                                                    q_price_of=offre_week[4]
+                                                    q_currency_of=offre_week[5]
+                                                    q_BookLink_of=offre_week[6]
+                                                    q_room_of=offre_week[7]
+                                                    photo_of=photo_room.photo(q_room_of)
+                                                    template_of=[Template.GenericElement("Une "+q_room_of,
+                                                    item_url=photo_of,
+                                                    image_url=photo_of,
+                                                    subtitle="Pour "+str(q_nights_of)+" nuits et "+str(q_adults_of)+" personne(s)"+"\n"+"Du "+q_from_of+" au "+q_to_of+" à partir de "+str(q_price_of)+" "+q_currency_of,
+                                                    buttons=[
+                                                    Template.ButtonWeb("Réserver",q_BookLink_of),
+                                                    Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(q_from)+","+str(q_nights)+","+str(q_adults))
+                                                    ])]
+                                                    page.send(user_id,Template.Generic(template_of))
                                         if res_offre_of!="":
                                             message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
                                             quick_replies=[
