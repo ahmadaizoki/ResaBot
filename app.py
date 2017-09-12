@@ -197,7 +197,7 @@ def fb_receive_message():
                                                     q_BookLink_of=offre_week[6]
                                                     q_room_of=offre_week[7]
                                                     photo_of=photo_room.photo(q_room_of)
-                                                    template_of=[Template.GenericElement("Une "+q_room_of,
+                                                    template_of=[Template.GenericElement("Offre une "+q_room_of,
                                                     item_url=photo_of,
                                                     image_url=photo_of,
                                                     subtitle="Pour "+str(q_nights_of)+" nuits et "+str(q_adults_of)+" personne(s)"+"\n"+"Du "+q_from_of+" au "+q_to_of+" à partir de "+str(q_price_of)+" "+q_currency_of,
@@ -205,7 +205,7 @@ def fb_receive_message():
                                                     Template.ButtonWeb("Réserver",q_BookLink_of),
                                                     Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(q_from)+","+str(q_nights)+","+str(q_adults))
                                                     ])]
-                                                    page.send(user_id,"J'ai trouvé un offre specilae juste pour toi ;)")
+                                                    page.send(user_id,"J'ai trouvé un offre spéciale juste pour toi ;)")
                                                     page.send(user_id,Template.Generic(template_of))
                                         else:
                                             if res_offre_of!="":
