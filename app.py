@@ -181,10 +181,9 @@ def fb_receive_message():
                                     page.send(user_id,Template.Generic(template))
                                     try:
                                         res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
-                                        res_offre_of=res_offre[0]
-                                        res_offre_nom=res_offre[1]
+                                        res_offre_of=res_offre
                                         if res_offre_of!="":
-                                            message_offre="J'ai trouvé une offre juste pour toi ;) Tu veux que je te l'affiche?"
+                                            message_offre="J'ai trouvé une offre ("+res_offre_of+") juste pour toi ;) Tu veux que je te l'affiche?"
                                             quick_replies=[
                                             QuickReply(title="Oui",payload="PICK_OFFR"),
                                             QuickReply(title="Non",payload="PICK_OFFR")
@@ -197,13 +196,11 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="offre_spe":
-                        print ("coucou")
                         try:
                             date=res[2]
                             nights=res[3]
                             adults=res[4]
                             h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
-                            print (h_dispo)
                             q_from=h_dispo[0]
                             q_to=h_dispo[1]
                             q_nights=h_dispo[2]
@@ -214,9 +211,8 @@ def fb_receive_message():
                             q_room=h_dispo[7]
                             photo=photo_room.photo(q_room)
                             res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
-                            res_offre_of=res_offre[0]
-                            res_offre_nom=res_offre[1]
-                            if res_offre_of=="p2":
+                            res_offre_of=res_offre
+                            if res_offre_of=="offre 2":
                                 offre_week=offre_weekend.offre_we(q_from,q_to,str(q_nights),str(q_adults))
                                 if offre_week!="":
                                     if len(offre_week)==8:
@@ -229,7 +225,7 @@ def fb_receive_message():
                                         q_BookLink_of=offre_week[6]
                                         q_room_of=offre_week[7]
                                         photo_of=photo_room.photo(q_room_of)
-                                        template_of=[Template.GenericElement("Offre une "+q_room_of,
+                                        template_of=[Template.GenericElement(res_offre_of,
                                         item_url=photo_of,
                                         image_url=photo_of,
                                         subtitle="Pour "+str(q_nights_of)+" nuits et "+str(q_adults_of)+" personne(s)"+"\n"+"Du "+q_from_of+" au "+q_to_of+" à partir de "+str(q_price_of)+" "+q_currency_of,
@@ -270,10 +266,9 @@ def fb_receive_message():
                             page.send(user_id,Template.Generic(template))
                             try:
                                 res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
-                                res_offre_of=res_offre[0]
-                                res_offre_nom=res_offre[1]
+                                res_offre_of=res_offre
                                 if res_offre_of!="":
-                                    message_offre="Si tu souhaites il y a une offre "+res_offre_of+" qui est: "+res_offre_nom+":"
+                                    message_offre="J'ai trouvé une offre ("+res_offre_of+") juste pour toi ;) Tu veux que je te l'affiche?"
                                     quick_replies=[
                                     QuickReply(title="Oui",payload="PICK_OFFR"),
                                     QuickReply(title="Non",payload="PICK_OFFR")
