@@ -197,11 +197,13 @@ def fb_receive_message():
                         except:
                             client.send_text(user_id,speech)
                     elif intention=="offre_spe":
+                        print ("coucou")
                         try:
                             date=res[2]
                             nights=res[3]
                             adults=res[4]
                             h_dispo=fbweb.get_quotation(date,"",nights,adults,conf.HID,"json","",conf.H_Access_Token)
+                            print (h_dispo)
                             q_from=h_dispo[0]
                             q_to=h_dispo[1]
                             q_nights=h_dispo[2]
