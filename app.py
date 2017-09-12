@@ -186,7 +186,7 @@ def fb_receive_message():
                                         print (res_offre_of)
                                         if res_offre_of=="p2":
                                             print (q_from,q_to,q_nights,q_adults)
-                                            offre_week=offre_weekend.offre_we(q_from,q_to,q_nights,q_adults)
+                                            offre_week=offre_weekend.offre_we(q_from,q_to,str(q_nights),str(q_adults))
                                             print (offre_week)
                                             if offre_week!="":
                                                 if len(offre_week)==8:
