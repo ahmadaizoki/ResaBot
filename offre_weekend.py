@@ -42,13 +42,11 @@ def offre_we(dateIn,dateOut,nights,adults):
     price_in=res_in["data"][0]["totalPrice"]
     means_in=int(price_in)/int(nights)
     rate_in=res_in["data"][0]["rate"]
-    print (price_in,rate_in,means_in)
     res_out=requests.get("https://websdk.fastbooking-services.com/quotation/?arrivalDate="+dateOut+"&rate="+""+"&nights="+"2"+"&adults="+adults+"&property="+config.HID+"&output="+"json"+"&accessCode="+""+"&_authCode="+config.H_Access_Token)
     res_out=res_out.json()
     price_out=res_out["data"][0]["totalPrice"]
     means_out=int(price_out)/2
     rate_out=res_out["data"][0]["rate"]
-    print (price_out,rate_out,means_out)
     if (means_out/means_in)>rate:
         if rate_out==rate_in:
             nights=str(int(nights)+2)
@@ -85,6 +83,3 @@ def offre_we(dateIn,dateOut,nights,adults):
             return (q_from_in,q_to_in,q_nights_in,q_adults_in,q_price_in,q_currency_in,q_BookLink_in,q_room_in,q_from_out,q_to_out,q_nights_out,q_adults_out,q_price_out,q_currency_out,q_BookLink_out,q_room_out)
     else:
         return ""
-
-
-print (offre_we ("2017-12-14","2017-12-15","1","2"))

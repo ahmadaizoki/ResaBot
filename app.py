@@ -185,9 +185,7 @@ def fb_receive_message():
                                         res_offre_nom=res_offre[1]
                                         print (res_offre_of)
                                         if res_offre_of=="p2":
-                                            print (q_from,q_to,q_nights,q_adults)
                                             offre_week=offre_weekend.offre_we(q_from,q_to,str(q_nights),str(q_adults))
-                                            print (offre_week)
                                             if offre_week!="":
                                                 if len(offre_week)==8:
                                                     q_from_of=offre_week[0]
@@ -207,6 +205,7 @@ def fb_receive_message():
                                                     Template.ButtonWeb("Réserver",q_BookLink_of),
                                                     Template.ButtonPostBack("Plus de chambres","CHAMBRE_PAYLOAD,"+str(q_from)+","+str(q_nights)+","+str(q_adults))
                                                     ])]
+                                                    page.send(user_id,"J'ai trouvé un offre specilae juste pour toi ;)")
                                                     page.send(user_id,Template.Generic(template_of))
                                         else:
                                             if res_offre_of!="":
