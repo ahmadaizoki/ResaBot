@@ -113,7 +113,7 @@ def api_message(text,user_id):
             print ("ahmad")
         print ([speech]+[intention]+[date]+[nights]+[adults])
         return ([speech]+[intention]+[date]+[nights]+[adults]+[resolvedQuery])
-    elif intention=="nouvelle_date" or intention=="nombre_nuits" or intention=="nombre_personnes" or intention=="Moins_cher" :
+    elif intention=="nouvelle_date" or intention=="nombre_nuits" or intention=="nombre_personnes" or intention=="Moins_cher" or intention=="offre_spe" :
         try:
             date=res['result']['contexts'][0]['parameters']['date']
             nights=res['result']['contexts'][0]['parameters']['nbnight']
