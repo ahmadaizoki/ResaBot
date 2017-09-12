@@ -183,7 +183,6 @@ def fb_receive_message():
                                         res_offre=offre.offre(str(q_from),str(q_to),int(q_nights))
                                         res_offre_of=res_offre[0]
                                         res_offre_nom=res_offre[1]
-                                        print (res_offre_of)
                                         if res_offre_of=="p2":
                                             offre_week=offre_weekend.offre_we(q_from,q_to,str(q_nights),str(q_adults))
                                             if offre_week!="":

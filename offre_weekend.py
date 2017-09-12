@@ -22,7 +22,6 @@ try:
     nbDays=rows[0][1]
     nbNMax=rows[0][2]
     nbNMin=rows[0][3]
-    print (nbNMax,nbNMin)
     dayIn=rows[0][4]
     dayOut=rows[0][5]
     nom_offre=rows[0][6]
