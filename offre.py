@@ -12,6 +12,7 @@ except:
 rows=[]
 cur=conn.cursor()
 
+#verifier si la réservation active un offre ou pas .
 def offre(dateIn,dateOut,nights):
     dateIN=dateIn.split('-')
     dateOUT=dateOut.split('-')

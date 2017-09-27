@@ -3,6 +3,7 @@
 import time
 import datetime
 
+#tester si la date est française ou anglaise puis le mettre dans le type anglaise.
 def test(date):
     date=date_split(date)
     try:
@@ -17,7 +18,7 @@ def test(date):
         except:
             date=date
     return str(date)
-
+#remplacer les / dans la date par -
 def date_split(date):
     try:
         d=date.split("/")

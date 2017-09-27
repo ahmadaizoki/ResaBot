@@ -3,6 +3,7 @@ import time
 import datetime
 import date
 
+#calculerla date pour (aujourd'hui ,aujourd'hui+7,aujourd'hui+14,aujourd'hui-7,aujourd'hui_14).
 def date_offre(date):
     dd=date.split('-')
     year=int(dd[0])

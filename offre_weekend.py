@@ -35,6 +35,7 @@ except:
     nom_offre=""
     print ("erreur de connexion")
 
+#gérer la deuxième offre.
 def offre_we(dateIn,dateOut,nights,adults):
     res_in=requests.get("https://websdk.fastbooking-services.com/quotation/?arrivalDate="+dateIn+"&rate="+""+"&nights="+nights+"&adults="+adults+"&property="+config.HID+"&output="+"json"+"&accessCode="+""+"&_authCode="+config.H_Access_Token)
     res_in=res_in.json()

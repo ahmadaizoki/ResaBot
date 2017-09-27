@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 
+#le nombre de jours entre aujourd'hui et samedi prochain.
 def date_week():
     d=datetime.datetime.today()
     dd=d.weekday()

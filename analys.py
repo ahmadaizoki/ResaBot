@@ -17,6 +17,7 @@ def analyse_date(sentence):
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
     tm_mon=time_loc.tm_mon
+    #detecter le nombre de jour
     for mot1 in sentence_words:
         if mot1=="premier":
             i=1
@@ -33,6 +34,7 @@ def analyse_date(sentence):
         elif mot1=="cinquieme":
             i=5
             break
+    #detecter le mois
     for mot2 in sentence_words:
         if mot2=="janvier":
             m=1
@@ -72,6 +74,7 @@ def analyse_date(sentence):
             break
     cal=calendar.monthcalendar(tm_year,m)
     re=0
+    #detecter le jour
     for mot3 in sentence_words:
         for j in range(0,len(cal)):
             if mot3=="lundi":
@@ -130,6 +133,7 @@ def analyse_date(sentence):
                     re=re
                 if re==i:
                     break
+    #calculer la date
     if m<tm_mon:
         date=datetime.date(tm_year+1,m,day)
     else:

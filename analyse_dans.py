@@ -8,6 +8,7 @@ import date as dd
 import time
 import datetime
 
+#calculer la date des phrases de types (dans 10 jours, dans 3 mois) par exemple.
 def analyse_sentence(sentence):
     sentence1=unicodedata.normalize('NFD',sentence).encode('ascii','ignore')
     sentence2=sentence1.decode('utf-8')

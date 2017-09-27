@@ -8,6 +8,7 @@ import requests
 import date
 import date_offre
 
+#demander les offres disponibles.
 def get_offers(output,property,orderBy,locale,currency,_authcode):
     res=requests.get("https://websdk.fastbooking-services.com/offers/?output="+output+"&property="+property+"&orderBy="+orderBy+"&locale="+locale+"&currency="+currency+"&_authCode="+_authcode)
     resulta=res.json()
@@ -29,6 +30,7 @@ def get_offers(output,property,orderBy,locale,currency,_authcode):
         q_BookLink=q_BookLink+[resulta["data"]["rates"][i]["quotation"]["plainBookLink"]]
     return (url,title,q_from,q_to,q_price,q_currency,q_BookLink)
 
+#demander les photos disponibles.
 def get_gallery(property,locale,_authcode):
     res=requests.get("https://websdk.fastbooking-services.com/gallery/?property="+property+"&locale="+locale+"&_authCode="+_authcode)
     resulta=res.json()
@@ -53,6 +55,7 @@ def get_quotation(arrivalDate,rate,nights,adults,property,output,accessCode,_aut
     q_room=resulta["data"][0]["room"]
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
 
+#demander la reservation disponibles.
 def get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode,_authCode):
     q_from=[]
     q_to=[]
@@ -76,6 +79,7 @@ def get_quotation_room(arrivalDate,rate,nights,adults,property,output,accessCode
             q_room=q_room+[resulta["data"][0]["room"]]
     return (q_from,q_to,q_nights,q_adults,q_price,q_currency,q_BookLink,q_room)
 
+#vérifier si il y a de réservation moins cher.
 def moins_cher(arrivalDate,rate,nights,adults,property,output,accessCode,_authCode):
     date2=date_offre.date_offre(arrivalDate)
     price=100000

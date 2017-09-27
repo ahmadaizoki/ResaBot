@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#la main photo pour chaque room.
 def photo(room):
     if room=="Standard-Room":
         url="https://mediastore.hotelcontent.net/e87b6078574cc3417cc6f3a76cec4562/2544e5b1e7659a7/f24ae6a615e106bf9b68bc9fc24d36db.jpg"

@@ -12,6 +12,7 @@ except:
 rows=[]
 cur=conn.cursor()
 
+#add les utilisateurs dans une base de données.
 def users(user_id,timestamp):
     try:
         cur.execute("""SELECT * FROM users WHERE userid=%(user_id)s""",{"user_id":user_id})
@@ -32,6 +33,7 @@ def users(user_id,timestamp):
         except:
             print ("erreur connexion")
 
+#recuperer la date de dernier message utilisateur.
 def get_users_timestamp(user_id):
     time_loc=time.localtime()
     tm_year=time_loc.tm_year
@@ -63,6 +65,7 @@ def get_users_timestamp(user_id):
     else:
         return False
 
+#recuperer l'id des utilisateurs.
 def get_users_id():
     try:
         cur.execute("""SELECT userid FROM users""")

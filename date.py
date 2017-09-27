@@ -3,7 +3,7 @@
 import time
 import datetime
 import date_jour_semaine
-
+#calculer la date après un nombre specific de jours.
 def time_calc(day):
     time_loc=time.localtime()
     tm_year=time_loc.tm_year

@@ -31,6 +31,7 @@ USER_SEQ={}
 from pymessager.message import Messager
 client=Messager(conf.fb_access_token)
 
+#vérifier les access à la page.
 @app.route('/webhook', methods=["GET"])
 def fb_webhook():
     verification_code = conf.fb_verifing_token
@@ -38,7 +39,7 @@ def fb_webhook():
     if verification_code == verify_token:
         return request.args.get('hub.challenge')
 
-
+#le webhook pour recevoir les message de facebook messenger.
 @app.route('/webhook', methods=['POST'])
 def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
@@ -340,6 +341,7 @@ def fb_receive_message():
 
     return "Ok"
 
+#gérer les postbacks
 def received_postback(event):
     user_id=event["sender"]["id"]
     payload=event["postback"]["payload"]

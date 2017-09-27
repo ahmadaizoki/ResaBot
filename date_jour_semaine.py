@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 
+#calculer la date des phrases de type (lundi prochain) par exemple.
 def jour_prochain(sentence):
     d=datetime.datetime.today()
     dd=d.weekday()
