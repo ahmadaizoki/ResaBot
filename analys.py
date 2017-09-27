@@ -9,6 +9,7 @@ import time
 import os
 import sys
 
+#analyer la phrase pour détecter s'il est de type date (premier lundi d'avril) par exemple et calculer la date de la phrase après.
 def analyse_date(sentence):
     sentence1=unicodedata.normalize('NFD',sentence).encode('ascii','ignore')
     sentence2=sentence1.decode('utf-8')

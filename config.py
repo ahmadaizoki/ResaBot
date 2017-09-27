@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-fb_access_token="EAAE1DkA1qK4BAE5yqVHQy4y0pmBWAYZAW9RZB5H2AKvkE1gUMLDv1Of9M5W8UgZCXSIFQd8pnxZCmGn3dkZBoEVDcLW2OY7bvSLhYEeDI28NWGeONbhqOhbQA1UtvI49yh20s9x2ZBC0fpGPtaZCqHpGK6zy7WF65ZAgXpFdsDLy8wZDZD" #facebook access token
+fb_access_token="EAABsmwjr8EwBALC3vJIIBLZCKm8j4oepJB4f6sUm7unFxLTpmg0ZBcJBcdO9Pmjkb50iSx0lHbIQZAARZCX51ltzzO1016pZAb304PHFnhbPffSOdZCFOMaLS1WjIvGSETORaHwr5wChfX4bzyungfNLRdMxmKrZAKdZCZBnxp3zc6NIvAo241WpOaNWWgnkhr3MZD" #facebook access token
 fb_verifing_token="Accorhotels" #facebook verifing token
 api_client_token="443652a209264e60837601b8b172936e" #API.AI CLIENT_ACCESS_TOKEN
 db_url="postgres://ufmqwqytarffyx:96a05ed81622bac458a19cff32a97e37fb2ae74bfb2a1e3f3b484fdf30735b82@ec2-54-75-224-100.eu-west-1.compute.amazonaws.com:5432/deoaedt1t45duq" #connexion avec la base de données
